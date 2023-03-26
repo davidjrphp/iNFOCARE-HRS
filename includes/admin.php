@@ -2,25 +2,27 @@
 
 function viewpatient()
 {
-	$id = $_GET['id'];
+	
 	require 'connect.php';
-	$sql = "SELECT * FROM hospital.patient WHERE `id`='$id'";
-	$sql2 = "SELECT NUPIN from hospital.users";
-	$query = mysqli_query($con,$sql);
-	$query2 = mysqli_query($con,$sql2);
-	while ($row = mysqli_fetch_array($query)) {
-		$year = date('Y') - $row['birthyear'];
-		if($row2 = mysqli_fetch_array($query2)) {
-		echo "
-		
-		<tr style='height:40px;'>
-				<td style='width:40%;padding-left:20px;'><b>ID</b></td>
-				<td>".$row2[0]."-".$row['id']."</td>
-			</tr>
-			";
-			
-		}	
-		echo"
+// Assuming you have established a connection to your MySQL database using mysqli or PDO
+// And you have a "users" table with columns "id", "name", "email", and "password"
+
+// Retrieve the ID parameter from the query string
+$id = $_GET['id'];
+
+// Prepare a SQL statement to select the record with the specified ID
+$sql = "SELECT * FROM patient WHERE id = $id";
+
+// Execute the SQL statement and store the result set in a variable
+$result = mysqli_query($con, $sql);
+
+// Check if the query returned a single record
+if(mysqli_num_rows($result) == 1) {
+    // Fetch the record as an associative array
+    $row = mysqli_fetch_assoc($result);
+
+    // Display the record details
+    echo"
 			<tr style='height:40px;'>
 				<td style='width:40%;padding-left:20px;'><b>FIRSTNAME</b></td>
 				<td>".$row['fname']."</td>
@@ -74,7 +76,14 @@ function viewpatient()
 				<td>".$row['birthdate']."</td>
 			</tr>
 		";
-	}
+} else {
+    // If no record was found, display an error message
+    echo "No record found with ID $id";
+}
+
+// Close the database connection
+mysqli_close($con);
+
 }
 
 function addpatient()
@@ -115,7 +124,7 @@ function addpatient()
 	$query = mysqli_query($con,$sql);
 
 	if (!empty($query)) {
-		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Added</b><br><br>";
+		echo "<script>alert('Successfully Added!'); window.location='viewpatient.php'</script>";
 	}
 	else{
 		echo mysqli_error();

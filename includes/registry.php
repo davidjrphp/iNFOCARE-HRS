@@ -28,8 +28,10 @@ function patients()
 	
 }
 
+
 function viewpatient()
-{
+{	
+	
 	$id = $_GET['id'];
 	require 'connect.php';
 	$sql = "SELECT * FROM hospital.patient WHERE `id`='$id'";
@@ -39,65 +41,53 @@ function viewpatient()
 	while ($row = mysqli_fetch_array($query)) {
 		$year = date('Y') - $row['birthyear'];
 		if($row2 = mysqli_fetch_array($query2)) {
-			echo "
-			<table>
-				<thead>
-					<tr>
-						<td class='tr'><b>ID</b></td>
-						<td ><b>F.Name</b></td>
-						<td ><b>Surname</b></td>
-						<td ><b>Address</b></td>
-						<td ><b>Phone</b></td>
-						<td ><b>Marital Status</b></td>
-						<td ><b>Sex</b></td>
-						<td ><b>Blood Group</b></td>
-						<td ><b>Birth Year</b></td>
-						<td ><b>Birth Month</b></td>
-						<td ><b>Birth date</b></td>
-						<td ><b>Occupation</b></td>
-						<td ><b>Mother's Name</b></td>
-						<td ><b>Temperature</b></td>
-						<td ><b>Blood pres.</b></td>
-						<td ><b>Pulse</b></td>
-						<td ><b>Weight</b></td>
-						<td ><b>Height</b></td>
-						<td ><b>Preg. Status</b></td>
-						<td ><b>Comments</b></td>
-						<td ><b>Update Record</b></td>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-							<td>".$row['id']."</td>
-							<td>".$row['fname']."</td>
-							<td>".$row['sname']."</td>
-							<td>".$row['address']."</td>
-							<td>".$row['phone']."</td>
-							<td>".$row['maritalstatus']."</td>
-							<td>".$row['sex']."</td>
-							<td>".$row['bloodgroup']."</td>
-							<td>".$row['birthyear']."</td>
-							<td>".$row['birthmonth']."</td>
-							<td>".$row['birthdate']."</td>
-							<td>".$row['occupation']."</td>
-							<td>".$row['parentsname']."</td>
-							<td>".$row['temp']."</td>
-							<td>".$row['bp']."</td>
-							<td>".$row['pulse']."</td>
-							<td>".$row['weight']."</td>
-							<td>".$row['height']."</td>
-							<td>".$row['preg_status']."</td>
-							<td>".$row['comments']."</td>
-							<td><center><a href='editpatient.php?id=".$row['id']."'><img src='../assets/img/update.png' height='40px' width='40px'></a></center></td>
-					</tr>
-					
-					</tbody>
-					
-					</table>
-				";
-		}
+		echo "
+		
+		<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>ID</b></td>
+				<td>".$row2[0]."-".$row['id']."</td>
+			</tr>
+			";
+			
+		}	
+		echo"
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>FIRSTNAME</b></td>
+				<td>".$row['fname']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>SURNAME</b></td>
+				<td>".$row['sname']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>EMAIL</b></td>
+				<td>".$row['email']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>ADDRESS</b></td>
+				<td>".$row['address']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>PHONE</b></td>
+				<td>".$row['phone']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>GENDER</b></td>
+				<td>".$row['sex']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>BLOOD GRUOP</b></td>
+				<td>".$row['bloodgroup']."</td>
+			</tr>
+			<tr style='height:40px;'>
+				<td style='width:40%;padding-left:20px;'><b>YEARS</b></td>
+				<td>".$year."</td>
+			</tr>
+		";
+		
 	}
 }
+
 
 function searchpatients()
 {

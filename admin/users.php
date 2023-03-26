@@ -132,6 +132,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 ?>
 </tbody>
 </table>
+<button><a href="patient.php" method="get" style="margin-left:400px;"><button class="btnlink">View patients</button></a>
 <?php
 // display the pagination links
 if ($total_pages > 1) {
@@ -151,12 +152,6 @@ mysqli_close($con);
 
 ?>
 
-
-
-
-
-
-	
     </div>
  </div>
 </div>
@@ -173,21 +168,5 @@ mysqli_close($con);
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.dataTables.min.js"></script>
 	<script src="../js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-			$(document).on('click','.edit_data4',function(){
-				var edit_id4=$(this).attr('id');
-				$.ajax({
-					url:"edit_user.php",
-					type:"post",
-					data:{edit_id4:edit_id4},
-					success:function(data){
-						$("#info_update4").html(data);
-						$("#editData4").modal('show');
-					}
-				});
-			});
-		});
-	</script>
 </body>
 </html>
