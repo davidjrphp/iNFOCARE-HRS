@@ -63,139 +63,100 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
 			<thead class="alert-info">
 				<tr>
-                    <th>Username</th>
-                    <th>Congregation ID</th>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Phone</th>
-					<th>Gender</th>
-					<th>Status</th>
+					<th>Username</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Mobile Phone</th>
+					<th>NRC</th>
+					<th>DOB</th>
+					<th>Department</th>
+					<th>Date</th>
 					<th>Action</th>
+					
 				</tr>
 			</thead>
 			<tbody>
 <?php
-include '../includes/pagination.php';
-?>
-				<tr>
-					<td><?php echo $row['username']?></td>
-                    <td><?php echo $row['cong_ID']?></td>
-					<td><?php echo $row['f_name']?></td>
-					<td><?php echo $row['l_name']?></td>
-					<td><?php echo $row['phone']?></td>
-					<td><?php echo $row['sex']?></td>
-					<td><?php echo $row['status']?></td>
-					<td class="text-center" > 
-						<a href="filt_user.php?id=<?php echo $row["username"]; ?>" title='View'><i class="btn btn-success btn-sm"><span class="fa fa-edit fw-fa"></span>View</i></a>
-						<a href="edit_user.php?id=<?php echo  $row["id"]; ?>" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
-						<a href="deleteuser.php?id=<?php echo $row["username"]; ?>" title='Delete'><i class="btn btn-danger btn-sm"><span class="fa fa-delete fw-fa"></span>Delete</i></a>
-					</td> 
-				</tr>
-				<?php
-					}
-				?>
-			</tbody>
-		</table>
 
-		<!--  start  modal -->
-<div id="editData4" class="modal fade">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Upadte User details</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" id="info_update4">
-						<?php include("../edit_user.php");?>
-					</div>
-					<div class="modal-footer ">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal -->
-		</div>
-		<!--   end modal -->
+// connect to the database
+require '../includes/connect.php';
 
-	<div style='padding: 10px 20px 0px; border-top: dotted 1px #CCC;'>
-<strong>Page <?php echo $page_no." of ".$total_no_of_pages; ?></strong>
-</div>
+// set the number of records per page
+$records_per_page = 5;
 
-<ul class="pagination justify-content-end" style="margin:20px 0">
-	<?php // if($page_no > 1){ echo "<li><a href='?page_no=1'>First Page</a></li>"; } ?>
-    
-	<li <?php if($page_no <= 1){ echo "class='disabled'"; } ?>>
-	<a <?php if($page_no > 1){ echo "href='?page_no=$previous_page'"; } ?>>Previous</a>
-	</li>
-       
-    <?php 
-	if ($total_no_of_pages <= 10){  	 
-		for ($counter = 1; $counter <= $total_no_of_pages; $counter++){
-			if ($counter == $page_no) {
-		   echo "<li class='active'><a>$counter</a></li>";	
-				}else{
-           echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-				}
-        }
-	}
-	elseif($total_no_of_pages > 10){
-		
-	if($page_no <= 6) {			
-	 for ($counter = 1; $counter < 8; $counter++){		 
-			if ($counter == $page_no) {
-		   echo "<li class='active'><a>$counter</a></li>";	
-				}else{
-           echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-				}
-        }
-		echo "<li><a>...</a></li>";
-		echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
-		echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";
-		}
+// get the total number of records in the database
+$sql = "SELECT COUNT(*) FROM users";
+$result = mysqli_query($con, $sql);
+$total_records = mysqli_fetch_array($result)[0];
 
-	 elseif($page_no > 6 && $page_no < $total_no_of_pages - 6) {		 
-		echo "<li><a href='?page_no=1'>1</a></li>";
-		echo "<li><a href='?page_no=2'>2</a></li>";
-        echo "<li><a>...</a></li>";
-        for ($counter = $page_no - $adjacents; $counter <= $page_no + $adjacents; $counter++) {			
-           if ($counter == $page_no) {
-		   echo "<li class='active'><a>$counter</a></li>";	
-				}else{
-           echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-				}                  
-       }
-       echo "<li><a>...</a></li>";
-	   echo "<li><a href='?page_no=$second_last'>$second_last</a></li>";
-	   echo "<li><a href='?page_no=$total_no_of_pages'>$total_no_of_pages</a></li>";      
-            }
-		
-		else {
-        echo "<li><a href='?page_no=1'>1</a></li>";
-		echo "<li><a href='?page_no=2'>2</a></li>";
-        echo "<li><a>...</a></li>";
+// calculate the total number of pages
+$total_pages = ceil($total_records / $records_per_page);
 
-        for ($counter = $total_no_of_pages - 6; $counter <= $total_no_of_pages; $counter++) {
-          if ($counter == $page_no) {
-		   echo "<li class='active'><a>$counter</a></li>";	
-				}else{
-           echo "<li><a href='?page_no=$counter'>$counter</a></li>";
-				}                   
-                }
-            }
+// get the current page number
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $current_page = $_GET['page'];
+} else {
+    $current_page = 1;
+}
+
+// calculate the offset for the current page
+$offset = ($current_page - 1) * $records_per_page;
+
+// retrieve the records for the current page
+$sql = "SELECT * FROM users LIMIT $offset, $records_per_page";
+$result = mysqli_query($con, $sql);
+
+// display the records
+while ($row = mysqli_fetch_assoc($result)) {
+    // display the record data here
+	?>
+	<tr>
+	<td><?php echo $row['username']?></td>
+	<td><?php echo $row['fname']?></td>
+	<td><?php echo $row['sname']?></td>
+	<td><?php echo $row['email']?></td>
+	<td><?php echo $row['mobilephone']?></td>
+	<td><?php echo $row['NRC']?></td>
+	<td><?php echo $row['DOB']?></td>
+	<td><?php echo $row['department']?></td>
+	<td><?php echo $row['date']?></td>
+	<td class="text-aligne" > 
+		<a href="viewuser.php?id=<?php echo $row["username"]; ?>" title='View'><i class="btn btn-success btn-sm"><span class="fa fa-edit fw-fa"></span>View</i></a>
+		<a href="edituser.php?id=<?php echo  $row["id"]; ?>" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
+		<a href="deleteuser.php?id=<?php echo $row["username"]; ?>" title='Delete'><i class="btn btn-danger btn-sm"><span class="fa fa-delete fw-fa"></span>Delete</i></a>
+	</td> 
+</tr>
+<?php
 	}
 ?>
-    
-	<li <?php if($page_no >= $total_no_of_pages){ echo "class='disabled'"; } ?>>
-	<a <?php if($page_no < $total_no_of_pages) { echo "href='?page_no=$next_page'"; } ?>>Next</a>
-	</li>
-    <?php if($page_no < $total_no_of_pages){
-		echo "<li><a href='?page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
-		} ?>
-</ul>
+</tbody>
+</table>
+<?php
+// display the pagination links
+if ($total_pages > 1) {
+    echo "<div>";
+    for ($i = 1; $i <= $total_pages; $i++) {
+        if ($i == $current_page) {
+            echo "<span>$i</span>";
+        } else {
+            echo "<a href=\"users.php?page=$i\">$i</a>";
+        }
+    }
+    echo "</div>";
+}
+
+// close the database connection
+mysqli_close($con);
+
+?>
+
+
+
+
+
+
+	
     </div>
  </div>
 </div>
