@@ -57,8 +57,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         <div class="card-body"> 
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-<fieldset>
-	<legend><h3>Patient's Information</h3></legend>
+	<h3 style="text-center">Patient's Information</h3>
 		<div class="form-group">
 		<div class="form-row">
 			<div class="col-md">
@@ -124,13 +123,13 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 			<label for="Occupation">Occupation:</label>
 
 		<select class="form-control input-sm" name="occupation" id="Occupation">
-			<option value="Healthcare Provider">Healthcare Provider</option>
-			<option value="Teacher">Teacher</option>
-			<option value="Banker">Banker</option>
-			<option value="Farmer">Farmer</option>
-			<option value="Transport">Transport</option>
-			<option value="Trader">Trader</option>
-			<option value="Others">Others</option>
+			<option value="healthcare Provider">Healthcare Provider</option>
+			<option value="teacher">Teacher</option>
+			<option value="banker">Banker</option>
+			<option value="farmer">Farmer</option>
+			<option value="transport">Transport</option>
+			<option value="trader">Trader</option>
+			<option value="others">Others</option>
 
 		</select> 
 			</div>
@@ -155,7 +154,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
 			<select class="form-control input-sm" name="maritalstatus" id="maritalstatus">
 			<option value="">Choose</option>
-				<option value="Single">Single</option>
+				<option value="single">Single</option>
 				<option value="Married">Married</option>
 				<option value="Divorced">Divorced</option>
 				<option value="Widowed">Widowed</option>
@@ -175,13 +174,11 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 			</div>
 				<div class="col-md">
 			<label for="ParentsName">Relative's Name:</label>
-				<input class="form-control input-sm" id="ParentsName" name="parentsname"  type="text" >               
+				<input class="form-control input-sm" id="ParentsName" name="relat_name"  type="text" >               
 			</div>
 			</div>
-		</div><br /> 
-</fieldset><br />
-<fieldset>
-	<legend><h3>Vitals</h3></legend>
+		</div><br /> <br />
+	<h3 style="text-center">Vitals</h3>
 		<div class="form-group">
 		<div class="form-row">
 			<div class="col-md">
@@ -214,7 +211,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
 			<input name="weight" type="hidden" value="">
 			<input class="form-control input-sm" id="Weight" name="weight" placeholder=
-				"Weight" type="numbers" required>
+				"Weight" type="number" required>
 			</div>
 		</div>
 	</div> <br />
@@ -224,7 +221,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 			<label for="Height">Height (m):</label>
 
 			<input name="height" type="hidden" value="">
-			<input class="form-control input-sm" id="Pulse" name="height" placeholder=
+			<input class="form-control input-sm" id="Height" name="height" placeholder=
 				"Height" type="number" required>
 			</div>
 			<div class="col-md">
@@ -244,7 +241,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 		<div class="form-row">
 			<div class="col-md">
 			<label for="DOB">Enrollment Date:</label>
-				<input class="form-control input-sm" id="DOB" name="Date"  type="Date" required>               
+				<input class="form-control input-sm" id="Date" name="date"  type="Date" required>               
 		</div>
       <div class="col-md">
     	<label  for="Comments">Type Comments Here:</label>
@@ -255,12 +252,11 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
       </div>
 	</div>
 </div>
-</fieldset>
-		<button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+		<button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span>Save</button>
 	</form>
 		<?php 
 			extract($_POST);
-			if (isset($btn) && !empty($fname) && !empty($sname) && !empty($phone) && !empty($maritalstatus) && !empty($address) && !empty($parentsname) && !empty($sex) && !empty($DOB) && !empty($occupation) && !empty($bloodgroup) && !empty($date) && !empty($relat_phone) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($comments)) {
+			if (isset($save) && !empty($fname) && !empty($sname) && !empty($DOB) && !empty($sex) && !empty($age) && !empty($address) && !empty($phone) && !empty($occupation) && !empty($bloodgroup) && !empty($maritalstatus) && !empty($relat_phone) && !empty($relat_name) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($date) && !empty($comments)) {
 				require "../includes/admin.php";
 				addpatient();
 			}

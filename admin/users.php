@@ -119,7 +119,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	<td><?php echo $row['DOB']?></td>
 	<td><?php echo $row['department']?></td>
 	<td><?php echo $row['date']?></td>
-	<td class="text-center" > 
+	<td class="text-left" > 
 		<a href="edituser.php?id=<?php echo  $row["username"]; ?>" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
 		<a href="deleteuser.php?id=<?php echo $row["username"]; ?>" title='Delete'><i class="btn btn-danger btn-sm"><span class="fa fa-delete fw-fa"></span>Delete</i></a>
 	</td> 

@@ -92,16 +92,16 @@ function addpatient()
 	global $con;
 	$fname = trim(htmlspecialchars($_POST['fname']));
 	$sname = trim(htmlspecialchars($_POST['sname']));
-	$phone = trim(htmlspecialchars($_POST['phone']));
-	$address = trim(htmlspecialchars($_POST['address']));
-	$occupation = trim(htmlspecialchars($_POST['occupation']));
-	$maritalstatus = trim(htmlspecialchars($_POST['maritalstatus']));
-	$parentsname = trim(htmlspecialchars($_POST['parentsname']));
+	$DOB = trim(htmlspecialchars($_POST['DOB']));
 	$sex = trim(htmlspecialchars($_POST['sex']));
-	$birthyear = trim(htmlspecialchars($_POST['birthyear']));
-	$birthmonth = trim(htmlspecialchars($_POST['birthmonth']));
-	$birthdate = trim(htmlspecialchars($_POST['birthdate']));
+	$age = trim(htmlspecialchars($_POST['age']));
+	$address = trim(htmlspecialchars($_POST['address']));
+	$phone = trim(htmlspecialchars($_POST['phone']));
+	$occupation = trim(htmlspecialchars($_POST['occupation']));
 	$bloodgroup = trim(htmlspecialchars($_POST['bloodgroup']));
+	$maritalstatus = trim(htmlspecialchars($_POST['maritalstatus']));
+	$relat_name = trim(htmlspecialchars($_POST['relat_name']));
+	$relat_phone = trim(htmlspecialchars($_POST['relat_phone']));
 	//vitals
 	$temp = trim(htmlspecialchars($_POST['temp']));
 	$bp = trim(htmlspecialchars($_POST['bp']));
@@ -117,7 +117,7 @@ function addpatient()
 	
 	require_once "connect.php";
 
-	$sql = "INSERT INTO hospital.patient VALUES ('','$fname','$sname','$address','$phone','$maritalstatus','$sex','$bloodgroup','$birthyear','$birthmonth','$birthdate','$occupation','$parentsname','$temp','$bp','$pulse','$weight','$height','$preg_status','$comments','$date')";
+	$sql = "INSERT INTO hospital.patient VALUES ('','$fname','$sname','$address','$phone','$maritalstatus','$sex','$age','$bloodgroup','$DOB','$occupation','$relat_name','$relat_phone','$temp','$bp','$pulse','$weight','$height','$preg_status','$comments','$date')";
 	//$sql = "INSERT INTO hospital.patient `id`,`fname`,`sname`,`address`,`phone`,`maritalstatus`,`sex`,`bloodgroup`,`birthyear`,`birthmonth`,`birthdate`,`occupation`,`parentsname`,`temp`,`bp`,`pulse`,`weight`,`height`,`preg_status`,`comments`,`date` VALUES ('','$fname','$sname','$address','$phone','$maritalstatus','$sex','$bloodgroup','$birthyear','$birthmonth','$birthdate','$occupation','$parentsname','$temp','$bp','$pulse','$weight','$height','$preg_status','$comments','$date')";
 	
 	//$sql2 = "INSERT INTO hospital.vitals VALUES ('','$temperature','$bp','$pulse','$weight','$height','$preg_status','$comments','$date')";
@@ -240,13 +240,12 @@ function addqueue()
 function updateuser()
 {
 	require 'connect.php';
-	//$username = trim(htmlspecialchars($_POST['username']));
+	$name = trim(htmlspecialchars($_POST['name']));
 	$fname = trim(htmlspecialchars($_POST['fname']));
 	$sname = trim(htmlspecialchars($_POST['sname']));
 	$email = trim(htmlspecialchars($_POST['email']));
 	$mobilephone = trim(htmlspecialchars($_POST['mobilephone']));
 	$NRC = trim(htmlspecialchars($_POST['NRC']));
-	$DOB = trim(htmlspecialchars($_POST['DOB']));
 	$department = trim(htmlspecialchars($_POST['department']));
 	$password = trim(htmlspecialchars($_POST['password']));
 	$pass = ($password);
@@ -254,10 +253,10 @@ function updateuser()
 
 	$name = $_GET['name'];
 	
-		$sql = "UPDATE hospital.users SET `fname`='$fname',`sname`='$sname',`email`='$email',`mobilephone`='$mobilephone',`NRC`='$NRC',`DOB`='$DOB',`department`='$department',`password`='$pass' WHERE `username`='$name'";
+		$sql = "UPDATE hospital.users SET `username`='$name', `fname`='$fname',`sname`='$sname',`email`='$email',`mobilephone`='$mobilephone',`NRC`='$NRC',`department`='$department',`password`='$pass' WHERE `username`='$name'";
 		$query = mysqli_query($con,$sql);
 		if (!empty($query)) {
-			echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>User is Succesifully Updated</b>";
+			echo "<script>alert('Successfully Updated!'); window.location='users.php'</script>";
 
 		}	
 }
