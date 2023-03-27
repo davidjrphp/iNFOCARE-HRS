@@ -33,6 +33,52 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
          border-radius: 5px;
        
        }
+
+  .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 12px;
+  margin-right: 40px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  float: right;
+  position: relative;
+  
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
    </style>
 </head>
  <body class="fixed-nav sticky-footer" id="page-top">
@@ -53,19 +99,19 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search" aria-label="Search">&nbsp;
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-<div class="row-md">
-    <div class="col-md">
-		<a href="expo.php" style="margin-left:30px;"><button class="btnlink">Export Patients</button></a>
-	</div>
-	<div class="col-md">
-		<a href="expo1.php" style="margin-left:30px;"><button class="btnlink">Export History</button></a>
-	</div>
-	<div class="col-md">
-		<a href="expo2.php" style="margin-left:30px;"><button class="btnlink">Export Pharmacy</button></a><br>
-	</div>
-</div>
+      
+
         <div class="card card-register mx-auto mt-2">
-          <div class="card-header">Admin Settings</div>
+          <div class="card-header">Admin Settings 
+            <div class="dropdown">
+              <button onclick="myFunction()" class="dropbtn">Export Data</button>
+          <div id="myDropdown" class="dropdown-content">
+              <a href="expo.php" style="margin-left:30px;">Patients</a>
+              <a href="expo1.php" style="margin-left:30px;">History</a>
+              <a href="expo2.php" style="margin-left:30px;">Pharmacy</a>
+  </div>
+</div>
+   </div>
         <div class="card-body"> 
 		<?php
 
@@ -163,6 +209,27 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/jquery.dataTables.min.js"></script>
 	<script src="../js/dataTables.bootstrap.min.js"></script>
+
+  <script>
+      function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+  </script>
 
 </body>
 </html>

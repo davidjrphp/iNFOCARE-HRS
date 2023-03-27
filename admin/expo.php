@@ -5,29 +5,62 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 }
 ?>
 
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
-		<title> Export- HRS</title>
-		<meta name="viewport" content="width=device-width, initial-scale1.0">
-		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="../assets/style.css"
-	</head>
-<body>
-	<br>
-	<div class="wrapper">
-	<?php
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Export patient's Data-HRS</title>
+   <!-- Bootstrap core CSS-->
+   <!-- Bootstrap core CSS-->
+   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+  <!--<link href="../assets/style/style2.css" rel="stylesheet" type="text/css">-->
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+  
+  <style type="text/css" >
+	    button {
+         width: auto;
+         transition-duration: 0.4s;
+         font-size: 12px;
+		 margin-right: 10px;
+         text-align: center;
+         padding: 15px 32px;
+         float: right;
+         border-radius: 5px;
+       
+       }
+   </style>
+</head>
+ <body class="fixed-nav sticky-footer" id="page-top">
+ <?php
 		include "includes/header.php";
 		include "includes/left.php";
 	 ?>
-		<div class="right"><br>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+		  	<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+        		<li class="breadcrumb-item">
+          			<a href="index.php" style='color:#000;'>Dashboard</a>
+       		 	</li>
+        	<li class="breadcrumb-item active">Admin Panel</li>
+      	</ol>
+		  
+        <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i>Patient's Data 
 			<form method="POST" action="excel.php">
 			<button class="btn btn-success pull-right" name="export"><span class="glyphicon glyphicon-print"></span>Export</button>
-		</form>
-		<br /><br />
-		<table class="table table-bordered">
+		</form><br />
+		</div>
+            <div class="card-body">
+        <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
 			<thead class="alert-info">
 				<tr>
 					<th>ID</th>
@@ -38,11 +71,10 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<th>Marital Status</th>
 					<th>Gender</th>
 					<th>Blood Group</th>
-					<th>Birth Year</th>
-					<th>Birth month</th>
-					<th>Birth date</th>
+					<th>DOB</th>
 					<th>Occupation</th>
-					<th>Mother's Firstname</th>
+					<th>Relative's name</th>
+					<th>Relative's Phone</th>
 					<th>Temperature</th>
 					<th>Blood Pressure</th>
 					<th>Pulse</th>
@@ -50,6 +82,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<th>Height</th>
 					<th>Preg. Status</th>
 					<th>Comments</th>
+					<th>Birth date</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,11 +101,10 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<td><?php echo $fetch['maritalstatus']?></td>
 					<td><?php echo $fetch['sex']?></td>
 					<td><?php echo $fetch['bloodgroup']?></td>
-					<td><?php echo $fetch['birthyear']?></td>
-					<td><?php echo $fetch['birthmonth']?></td>
-					<td><?php echo $fetch['birthdate']?></td>
+					<td><?php echo $fetch['DOB']?></td>
 					<td><?php echo $fetch['occupation']?></td>
-					<td><?php echo $fetch['parentsname']?></td>
+					<td><?php echo $fetch['relat_name']?></td>
+					<td><?php echo $fetch['relat_phone']?></td>
 					<td><?php echo $fetch['temp']?></td>
 					<td><?php echo $fetch['bp']?></td>
 					<td><?php echo $fetch['pulse']?></td>
@@ -80,17 +112,28 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<td><?php echo $fetch['height']?></td>
 					<td><?php echo $fetch['preg_status']?></td>
 					<td><?php echo $fetch['comments']?></td>
+					<td><?php echo $fetch['date']?></td>
 				</tr>
 				<?php
 					}
 				?>
 			</tbody>
 		</table>
-	</div>
-	<?php 
-		include "includes/footer.php";
-		 ?>
+		</div>
+ </div>
+</div>
+</div>
+</div>
+<?php 
+	include "includes/footer.php";
+?>
+</div>
+ <!-- Bootstrap core JavaScript-->
+ <!-- Loading Scripts -->
+ <script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap-select.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
 </body>
-<script src="../assets/js/jquery-3.2.1.min.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
 </html>
