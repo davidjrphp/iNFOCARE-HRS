@@ -5,19 +5,6 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 }
 ?>
 
-
-
-
-<?php 
-session_start();
-if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
-	header("Location: ../index.php");
-}
-?>
-
-
-
-
 <!DOCTYPE html> 
 <html lang="en">
 
@@ -66,7 +53,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
         <div class="card card-register mx-auto mt-2">
-          <div class="card-header">Enter Drug Details</div>
+          <div class="card-header">Enter Drug Details&nbsp;&nbsp;<a href="medical.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>View Drugs</a></div>
         <div class="card-body"> 
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">

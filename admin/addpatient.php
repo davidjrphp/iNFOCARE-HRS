@@ -5,9 +5,6 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 }
 ?>
 
-
-
-
 <!DOCTYPE html> 
 <html lang="en">
 
@@ -30,9 +27,8 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
          transition-duration: 0.4s;
          font-size: 12px;
          text-align: center;
-         display: inline-block;
+         display: block;
          padding: 15px 32px;
-         float: block;
          border-radius: 5px;
        
        }
@@ -53,11 +49,11 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         	<li class="breadcrumb-item active">Admin Panel</li>
       	</ol>
 	  <form action="searchuser.php" method="get" class="d-flex" role="search">
-        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search by ID" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
         <div class="card card-register mx-auto mt-2">
-          <div class="card-header">Add New Patient</div>
+          <div class="card-header">Add New Patient&nbsp;&nbsp;<a href="patient.php" class="btn btn-primary  "><i class="fa fa-plus-circle fw-fa"></i>View Patient</a></div>
         <div class="card-body"> 
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">

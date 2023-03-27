@@ -179,7 +179,6 @@ function pharmacy()
 		echo "<td>".$row['drug_form']."</td>";
 		echo "<td>".$row['intake_freq']."</td>";
 		echo "<td>".$row['drug_price']."</td>";
-		echo "<td><center><a href='pharmacy.php?id=".$row['id']."'>Dispense</a></center></td>";
 		//echo "<td><center><a href='editdrug.php?id=".$row['id']."'><img src='../assets/img/glyphicons-151-edit.png' height='16px' width='17px'></a></center></td>";
 		
 	

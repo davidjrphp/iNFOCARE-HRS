@@ -27,12 +27,34 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
          transition-duration: 0.4s;
          font-size: 12px;
          text-align: center;
-         display: inline-block;
          padding: 15px 32px;
          float: block;
          border-radius: 5px;
-       
        }
+	   #dataTable {
+  			font-family: Arial, Helvetica, sans-serif;
+  			border-collapse: collapse;
+  			width: 100%;
+	}
+		#cdataTable td, #dataTable th {
+  			border: 1px solid #ddd;
+ 			 padding: 8px;
+			 color: white;
+	
+		}
+		#dataTable th {
+  			padding-top: 12px;
+  			padding-bottom: 12px;
+  			text-align: left;
+  			background-color: #04AA6D;
+  			color: white;
+		}
+		.table thead tr{
+			color: #25c346;
+  			background: #fff;
+  			text-align: left;
+  			font-weight: bold;
+		}
    </style>
 </head>
  <body class="fixed-nav sticky-footer" id="page-top">
