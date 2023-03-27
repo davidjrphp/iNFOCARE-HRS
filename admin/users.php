@@ -29,7 +29,6 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
          transition-duration: 0.4s;
          font-size: 12px;
          text-align: center;
-         display: inline-block;
          padding: 15px 32px;
          float: block;
          border-radius: 5px;

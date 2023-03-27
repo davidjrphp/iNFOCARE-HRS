@@ -176,49 +176,15 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
               </span>
             </a>
           </div>
-        </div><br /><br />
-       <div class="">
-          <h1></h2> <br /><br />
-      </div><br /><br />
-      <div class="center" >
-      <!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Announcements</button>
-  </div>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-lg">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-      <h4 class="modal-title">Select Category</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </div>
       </div>
-      <div class="modal-body">
-      <button type="button" > <a href="gen_ann.php" class="btn btn-primary btn-lg"> General</a></button>
-      <button type="button"> <a href="special_ann.php" class="btn btn-warning btn-lg">Special</a></button>
-      <button type="button" > <a href="visitann.php" class="btn btn-success btn-lg ">Visitors</a></button>
-      <button type="button" > <a href="newmem.php" class="btn btn-info btn-lg">New Member</a></button>
-      <button type="button" > <a href="disfellow.php" class="btn btn-danger btn-lg">Disfellowship</a></button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-
-      
        </div>
 		</div>
 	</div>
 	<?php 
 		include "includes/footer.php";
 		 ?>
-
+</div>
   <!-- Loading Scripts -->
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/bootstrap-select.min.js"></script>

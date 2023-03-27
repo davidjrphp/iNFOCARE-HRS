@@ -170,7 +170,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 			<label for="Phone">Relative's Phone:</label>
 
 			<input name="phone" type="hidden" value="">
-			<input class="form-control input-sm" id="Phone" name="relatives_phone" placeholder=
+			<input class="form-control input-sm" id="Phone" name="relat_phone" placeholder=
 				"Contact No:" type="number" required>
 			</div>
 				<div class="col-md">

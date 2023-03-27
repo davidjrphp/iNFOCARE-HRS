@@ -126,6 +126,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<th>Height</th>
 					<th>Preg. Status</th>
 					<th>Enrollment Date</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -144,6 +145,9 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<td><?php echo $fetch['height']?></td>
 					<td><?php echo $fetch['preg_status']?></td>
 					<td><?php echo $fetch['date']?></td>
+					<td class="text-center" > 
+						<a href="editpatient.php?id=<?php echo  $fetch["id"]; ?>" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
+					</td> 
 				</tr>
 				<?php
 					}

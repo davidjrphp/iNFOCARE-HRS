@@ -4,69 +4,165 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
-<!DOCTYPE html>
+ 
+ <!DOCTYPE html> 
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale1.0">
-	<title>Settings Admin Dashboard - HRS</title>
-	<link rel="stylesheet" type="text/css" href="../assets/style.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Settings- HRS</title>
+   <!-- Bootstrap core CSS-->
+   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+  <!--<link href="../assets/style/style2.css" rel="stylesheet" type="text/css">-->
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+  
+
+  <style type="text/css" >
+	    button {
+         width: auto;
+         transition-duration: 0.4s;
+         font-size: 12px;
+         text-align: center;
+         padding: 15px 32px;
+         float: block;
+         border-radius: 5px;
+       
+       }
+   </style>
 </head>
-<body>
-<br>
-	<div class="wrapper">
-	<?php
-		include "includes/header2.php";
+ <body class="fixed-nav sticky-footer" id="page-top">
+ <?php
+		include "includes/header.php";
 		include "includes/left.php";
 	 ?>
-		<div class="right"><br><br>
-		<a href="expo.php" style="margin-left:30px;"><button class="btnlink">Export Patients</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="expo1.php" style="margin-left:30px;"><button class="btnlink">Export History</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="expo2.php" style="margin-left:30px;"><button class="btnlink">Export Pharmacy</button></a><br><br>
-			<?php
-
-			$name = $_SESSION['admin'];
-			$type = $_SESSION['type'];
-
-			?>
-			<center>
-				<form action="settings.php" method="POST">
-				<input type="text" name="username" class="form" value="<?php echo $name; ?>" required="required" disabled="disabled"><br><br>
-				
-				
-				<?php 
-				require_once '../includes/connect.php';
-				$sql = "SELECT * FROM hospital.users WHERE username='". $name . "' AND type='" . $type . "'";
-				$query = mysqli_query($con, $sql);
-
-				while ($row = mysqli_fetch_array($query)) {
-					?>
-					<input type="text" name="fname" class="form" value="<?php echo $row['fname']; ?>" required="required"><br><br>
-					<input type="text" name="sname" class="form" value="<?php echo $row['sname']; ?>" required="required"><br><br>
-					<input type="password" name="password" class="form" placeholder="Enter Password" required="required"><br><br>
-					<input type="password" name="password2" class="form" placeholder="Re-enter Password" required="required"><br><br>
-					<?php
-				}?>
-				 
-				<input type="submit" value="Update" class="btnlink" name="btn">
-			</form>
-			<?php 
-			extract($_POST);
-			if (isset($btn) && !empty($fname)&& !empty($sname)&& !empty($password)&& !empty($password2)) {
-				if ($password != $password2) {
-					echo "<br><b style='color:red;font-size:14px;font-family:Arial;'>Password Must Match</b>";
-				}
-				else{
-					require "../includes/admin.php";
-					settings();
-				}
-				
-			} 
-			 ?>
-			</center>
-			</div>
-		<?php 
-		include "includes/footer.php";
-		 ?>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+      	<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+        		<li class="breadcrumb-item">
+          			<a href="index.php" style='color:#000;'>Admin Setings</a>
+       		 	</li>
+        	<li class="breadcrumb-item active">Admin Panel</li>
+      	</ol>
+	  <form action="searchuser.php" method="get" class="d-flex" role="search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search" aria-label="Search">&nbsp;
+    <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+<div class="row-md">
+    <div class="col-md">
+		<a href="expo.php" style="margin-left:30px;"><button class="btnlink">Export Patients</button></a>
 	</div>
+	<div class="col-md">
+		<a href="expo1.php" style="margin-left:30px;"><button class="btnlink">Export History</button></a>
+	</div>
+	<div class="col-md">
+		<a href="expo2.php" style="margin-left:30px;"><button class="btnlink">Export Pharmacy</button></a><br>
+	</div>
+</div>
+        <div class="card card-register mx-auto mt-2">
+          <div class="card-header">Admin Settings</div>
+        <div class="card-body"> 
+		<?php
+
+		$name = $_SESSION['admin'];
+		$type = $_SESSION['type'];
+
+	?>
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+
+<div class="form-group">
+  <div class="form-row">
+    <div class="col-md">
+    <label for="Username">Username:</label>
+
+      <input name="username" type="hidden" value="">
+       <input class="form-control input-sm" id="Username" name="username" value="<?php echo $name; ?>" placeholder=
+          "Username" type="text" disabled>
+    </div>
+  </div>
+</div><br>
+<?php 
+	require_once '../includes/connect.php';
+	$sql = "SELECT * FROM hospital.users WHERE username='". $name . "' AND type='" . $type . "'";
+	$query = mysqli_query($con, $sql);
+
+	while ($row = mysqli_fetch_array($query)) {
+?>
+
+<div class="form-group">
+  <div class="form-row">
+      <div class="col-md">
+    <label for="Firstname">First Name:</label>
+
+      <input name="fname" type="hidden" value="">
+       <input class="form-control input-sm" id="Fname" name="fname" value="<?php echo $row['fname']; ?>" placeholder=
+          "First Name" type="text" required>
+    </div>
+    <div class="col-md">
+    <label for="Lastname">Surname:</label>
+
+      <input name="l_name" type="hidden" value="">
+       <input class="form-control input-sm" id="Lastname" name="sname" value="<?php echo $row['sname']; ?>" placeholder=
+          "Surname" type="text" required>
+    </div>
+  </div>
+</div><br />
+<div class="form-group">
+  <div class="form-row">
+      <div class="col-md">
+      <label for="Password">Enter Password:</label>
+          <input class="form-control input-sm" id="pwd" name="password"  type="password" required>               
+    </div>
+    <div class="col-md">
+      <label for="Password">Confirm Password:</label>
+
+	  <input name="password2" type="hidden" value="">
+       <input class="form-control input-sm" id="pwd" name="password" value="" placeholder=
+          "Retype" type="password" required>
+    </div>
+  </div>
+</div>
+<?php
+}
+?>
+<br />  
+  <button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span>Save</button>
+  </form>
+  <?php 
+		extract($_POST);
+		if (isset($btn) && !empty($fname)&& !empty($sname)&& !empty($password)&& !empty($password2)) {
+		if ($password != $password2) {
+		echo "<br><b style='color:red;font-size:14px;font-family:Arial;'>Password Must Match</b>";
+		}
+		else{
+		require "../includes/admin.php";
+		settings();
+		}
+				
+	} 
+?>
+  
+  </div>
+</div>
+</div>
+</div>
+</div>
+<?php 
+	include "includes/footer.php";
+?>
+</div>
+<!-- Bootstrap core JavaScript-->
+ <!-- Loading Scripts -->
+ <script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap-select.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
 
 </body>
 </html>
