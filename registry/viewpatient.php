@@ -46,19 +46,29 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
         		<li class="breadcrumb-item">
           			<a href="index.php" style='color:#000;'>Patient's Information</a>
        		 	</li>
-        	<li class="breadcrumb-item active">Admin Panel</li>
+        	<li class="breadcrumb-item active">Registry Panel</li>
       	</ol>
 	  <form action="searchrep.php" class="d-flex" role="search">
-        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search by ID" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form><br />
         <div class="card mb-3">
+		<?php
+					
+					require '../includes/connect.php';
+					$id = isset($_GET['id']) ? $_GET['id'] : '';
+					$query = $con->query("SELECT * FROM `patient` WHERE `id`='$id'");
+					while($fetch = $query->fetch_array()){
+				?>
         	
 
-            <i class="fa fa-table"></i>&nbsp;&nbsp;<a href="reports.php" class="btn btn-primary "> <i class="fa fa-plus-circle fw-fa"></i>Update</a>
+            <i class="fa fa-table"></i><h3><?php echo $fetch['fname']." ".$fetch['sname'];?></h3> <br><h5 style="color:blue">Age:<?php echo $fetch['age'];?>years old</h5><br> <h5 style="color:green">Enrollment Date:<?php echo $fetch['date'];?></h5>
 		</div>
-
+		<?php
+			}
+		?>
 		<div class="card-body">
+			<h4 class="text-center">Patient's Infomation</h4>
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
 			<thead class="alert-info">
 				<tr>
@@ -91,12 +101,12 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 					<td><?php echo $fetch['sname']?></td>
 					<td><?php echo $fetch['DOB']?></td>
 					<td><?php echo $fetch['age']?></td>
-					<td><?php echo $fetch['sex']?></td>
+					<td><?php echo $fetch['occupation']?></td>
 					<td><?php echo $fetch['bloodgroup']?></td>
 					<td><?php echo $fetch['address']?></td>
 					<td><?php echo $fetch['phone']?></td>
 					<td><?php echo $fetch['maritalstatus']?></td>
-					<td><?php echo $fetch['occupation']?></td>
+					<td><?php echo $fetch['sex']?></td>
                     <td><?php echo $fetch['relat_name']?></td>
 					<td><?php echo $fetch['relat_phone']?></td>
 				</tr>
@@ -104,7 +114,71 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 					}
 				?>
 			</tbody>
-		</table><br /><br />
+		</table><br />
+		<h4 class="text-center">Vital Signs</h4>
+		<table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
+			<thead class="alert-info">
+				<tr>
+					<th>Temperature</th>
+					<th>B/P</th>
+					<th>Pulse</th>
+					<th>Weight</th>
+					<th>Height</th>
+					<th>Preg. Status</th>
+					<th>Enrollment Date</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					
+					require '../includes/connect.php';
+					$id = isset($_GET['id']) ? $_GET['id'] : '';
+					$query = $con->query("SELECT * FROM `patient` WHERE `id`='$id'");
+					while($fetch = $query->fetch_array()){
+				?>
+				<tr>
+					<td><?php echo $fetch['temp']?></td>
+					<td><?php echo $fetch['bp']?></td>
+					<td><?php echo $fetch['pulse']?></td>
+					<td><?php echo $fetch['weight']?></td>
+					<td><?php echo $fetch['height']?></td>
+					<td><?php echo $fetch['preg_status']?></td>
+					<td><?php echo $fetch['date']?></td>
+					<td class="text-center" > 
+						<a href="editpatient.php?id=<?php echo  $fetch["id"]; ?>" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
+					</td> 
+				</tr>
+				<?php
+					}
+				?>
+			</tbody>
+		</table><br />
+		<h4 class="text-center">Notes</h4>
+		<table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
+			<thead class="alert-info">
+				<tr>
+					<th>Medical Comments</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					
+					require '../includes/connect.php';
+					$id = isset($_GET['id']) ? $_GET['id'] : '';
+					$query = $con->query("SELECT * FROM `patient` WHERE `id`='$id'");
+					while($fetch = $query->fetch_array()){
+				?>
+				<tr>
+					<td><?php echo $fetch['comments']?></td>
+					
+				</tr>
+				<?php
+					}
+				?>
+			</tbody>
+		</table><br />
 		<form action="viewpatient.php?id=<?php echo $id = $_GET['id']; ?>" method="post">
 				<select name="doctor" class="form" required="required">
 					<option value="">Choose Doctor/Nurse</option>
@@ -120,6 +194,7 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 			<?php
 			extract($_POST);
 			if (isset($btn) && !empty($doctor)) {
+				require "../includes/registry.php";
 			 	assigntodoctor();
 			 } 
 			 ?>

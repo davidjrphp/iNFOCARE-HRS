@@ -282,7 +282,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
                     $result = mysqli_query($con, $query) or die(mysqli_error($con));
                     ?>
                      <script type="text/javascript">
-            alert("User added Successfully.");
+            alert("Patient added Successfully.");
             window.location = "patient.php";
         </script>
          <?php
@@ -331,20 +331,3 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
 </body>
 </html>
-
-
-<form>
-  <label for="gender">Gender:</label>
-  <select id="gender" name="gender">
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-  </select>
-  
-  <label for="pregnant">Pregnant status:</label>
-  <select id="pregnant" name="pregnant">
-    <option value="yes">Yes</option>
-    <option value="no">No</option>
-  </select>
-</form>
-
-

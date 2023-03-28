@@ -4,260 +4,330 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale1.0">
-	<title> Add Patient - HRS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Register Patient-HRS</title>
+   <!-- Bootstrap core CSS-->
+   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="../assets/style.css">
-	<style type="css/text">
-	div:first-of-type{
-		display: flex;
-		align-items: flex-start;
-		margin-bottom: 5px;
-	}
-	label {
-		margin-right: 15px;
-		line-height: 32px;
-	}
-	input{
-		appearance: none;
-		border radius: 50%;
-		width: 16px;
-		height: 16px;
-		border: 2px solid #999;
-		transition: 0.25s all linear;
-		margin-right:5px;
-		postion: relative;
-		top: 4px;
-	}
-	input:checked{
-		border: 6px solid black;
-	}
-	button-legend{
-		color: white;
-		background-color: black;
-		padding-left: 20px;
-		border-radius: 5px;
-		border: 0;
-		font-size: 14px;
-		
-	}
-	fieldset {
-		width:60px;
-		height: 60px;
-		margin: 0 auto;
-		margin-top: 10px;
-		border: 1px solid #000;
-		font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
-		font-size:14px;
-		font-weight:100;
-	}
-	button:hover{
-		background-color: white;
-		color: black;
-		outline: 1px solid black;
-	}
-	
-</style>
-	
+  
+  <!--<link rel="stylesheet" type="text/css" href="../assets/sb-admin.css">-->
+  <style type="text/css" >
+	    button {
+         width: auto;
+         transition-duration: 0.4s;
+         font-size: 12px;
+         text-align: center;
+         display: block;
+         padding: 15px 32px;
+         border-radius: 5px;
+       
+       }
+   </style>
 </head>
-<body>
-<br>
-	<div class="wrapper">
-	<?php
+ <body class="fixed-nav sticky-footer" id="page-top">
+ <?php
 		include "includes/header.php";
 		include "includes/left.php";
 	 ?>
-		<div class="right"><br>
-			<a href="patients.php" style="margin-left:500px;"><button class="btnlink">View Patients</button></a><br>
-			
-			<center>
-				<h4><center>Patient Information</center></h4><br><br>
-				<form action="addpatient.php" method="POST">
-					<input type="text" name="fname" class="form" placeholder="Enter Firstname" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="sname" class="form" placeholder="Enter Surname" required="required"><br><br>
-					<input type="number" name="phone" class="form" placeholder="Enter Phone number" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="address" class="form" placeholder="Enter Address" required="required"><br><br>
-					<select name="occupation" class="form" required="required">
-						<option value="">occupation</option>
-						<option>Healthcare Provider</option>
-						<option>Teacher</option>
-						<option>Banker</option>
-						<option>Farmer</option>
-						<option>Transport</option>
-						<option>Trader</option>
-						<option>Others</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;<select name="maritalstatus" class="form" required="required">
-						<option value="">marital status</option>
-						<option>single</option>
-						<option>married</option>
-						<option>divorced</option>
-						<option>widowed</option>
-						<option>Other</option>
-					</select><br><br>
-					<input type="text" name="parentsname" class="form" placeholder="Mother's First Name" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<select name="sex" class="form" required="required">
-						<option value="">Gender</option>
-						<option>Male</option>
-						<option>Female</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;<select name="bloodgroup" class="form" required="required">
-						<option value="">Blood Group</option>
-						<option>A</option>
-						<option>B</option>
-						<option>AB</option>
-						<option>O</option>
-					</select><br><br>
-					
-					<select name="birthyear" class="form" required="required">
-						<option value="">Birth Year</option>
-						<option>2022</option>
-						<option>2021</option>
-						<option>2020</option>
-						<option>2019</option>
-						<option>2018</option>
-						<option>2017</option>
-						<option>2016</option>
-						<option>2015</option>
-						<option>2014</option>
-						<option>2013</option>
-						<option>2012</option>
-						<option>2011</option>
-						<option>2010</option>
-						<option>2009</option>
-						<option>2008</option>
-						<option>2007</option>
-						<option>2006</option>
-						<option>2005</option>
-						<option>2004</option>
-						<option>2003</option>
-						<option>2002</option>
-						<option>2001</option>
-						<option>2000</option>
-						<option>1999</option>
-						<option>1998</option>
-						<option>1997</option>
-						<option>1996</option>
-						<option>1995</option>
-						<option>1994</option>
-						<option>1993</option>
-						<option>1992</option>
-						<option>1991</option>
-						<option>1990</option>
-						<option>1989</option>
-						<option>1988</option>
-						<option>1987</option>
-						<option>1986</option>
-						<option>1985</option>
-						<option>1984</option>
-						<option>1983</option>
-						<option>1982</option>
-						<option>1981</option>
-						<option>1980</option>
-						<option>1979</option>
-						<option>1978</option>
-						<option>1977</option>
-						<option>1976</option>
-						<option>1975</option>
-						<option>1974</option>
-						<option>1973</option>
-						<option>1972</option>
-						<option>1971</option>
-						<option>1970</option>
-						<option>1969</option>
-						<option>1968</option>
-						<option>1967</option>
-						<option>1966</option>
-						<option>1965</option>
-						<option>1964</option>
-						<option>1963</option>
-						<option>1962</option>
-						<option>1961</option>
-						<option>1960</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;<select name="birthmonth" class="form" required="required">
-						<option value="">birth month</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>11</option>
-						<option>12</option>
-					</select>&nbsp;&nbsp;&nbsp;&nbsp;<select name="birthdate" class="form" required="required">
-						<option value="">Birth date</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>11</option>
-						<option>12</option>
-						<option>13</option>
-						<option>14</option>
-						<option>15</option>
-						<option>16</option>
-						<option>17</option>
-						<option>18</option>
-						<option>19</option>
-						<option>20</option>
-						<option>21</option>
-						<option>23</option>
-						<option>24</option>
-						<option>25</option>
-						<option>26</option>
-						<option>27</option>
-						<option>28</option>
-						<option>29</option>
-						<option>30</option>
-						<option>31</option>
-					</select><br><br>
-					
-					<hr>
-					
-						<h4>Vitals/Anthropometrics</h4><br><br>
-						
-						<input type="number" name="temp" class="form" placeholder="Enter Temperature" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="bp" class="form" placeholder="Enter BP" required="required"><br><br>
-						<input type="number" name="pulse" class="form" placeholder="Enter Pulse rate" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="weight" class="form" placeholder="Enter Weight" required="required"><br><br>
-						<input type="number" name="height" class="form" placeholder="Enter Height" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="preg_status" class="form" placeholder="Pregnancy Status" disabled="disabled"><br><br>
-						<input type="text" name="comments" class="form" placeholder="Comment" required="required">&nbsp;&nbsp;&nbsp;&nbsp;<input class="form" type="date" placeholder="Enter date (y/m/d)" name="date" required="required"><br><br><br>
-						<fieldset style="height:60px;width:430px;margin:0;">
-							<legend>Pregnant Status:</legend>
-						<div>
-							<input type="radio" id="pregnant" name="preg_status" value="pregnant" checked>
-							<label for="pregnant">Pregnant</label>
-							<input type="radio" id="Not pregnant" name="preg_status" value="Not pregnant">
-							<label for="not_pregnant">Not Pregnant</label>
-							<input type="radio" id="Not applicable" name="preg_status" value="Not applicable">
-							<label for="pregnant">Not Applicable</label>
-						</div>
-						</fieldset>
-						<br><br>
-						<input type="reset" value="Clear" class="btnlink" name="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="btnlink" name="btn"><br><br><br>
-						<br>
-				</form>
-			<?php 
-			extract($_POST);
-			if (isset($btn) && !empty($fname) && !empty($sname) && !empty($phone) && !empty($maritalstatus) && !empty($address) && !empty($parentsname) && !empty($sex) && !empty($birthyear) && !empty($birthmonth) && !empty($birthdate) && !empty($occupation) && !empty($bloodgroup) && !empty($date) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($comments)) {
-				require "../includes/registry.php";
-				addpatient();
-			}
-			 ?>
-			
-			 
-			</center>
-			
+    <div class="content-wrapper">
+      <div class="container-fluid">
+      	<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+        		<li class="breadcrumb-item">
+          			<a href="index.php" style='color:#000;'>Patient's Registeration</a>
+       		 	</li>
+        	<li class="breadcrumb-item active">Registry Panel</li>
+      	</ol>
+	  <form action="search.php" method="get" class="d-flex" role="searchs">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search by ID" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+        <div class="card card-register mx-auto mt-2">
+          <div class="card-header">Add New Patient&nbsp;&nbsp;<a href="patient.php" class="btn btn-primary  "><i class="fa fa-plus-circle fw-fa"></i>View Patient</a></div>
+        <div class="card-body"> 
+
+		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
+	<h3 >Patient's Information</h3>
+
+		<div class="form-group">
+			<div class="form-row">
+				<div class="col-md">
+				<label for="Firstname">First Name:</label>
+
+				<input name="fname" type="hidden" value="">
+			<input class="form-control input-sm" id="Firstname" name="fname" placeholder=
+				"First Name" type="text" required>
+			</div>
+			<div class="col-md">
+			<label for="Lastname">Surname:</label>
+
+			<input name="l_name" type="hidden" value="">
+			<input class="form-control input-sm" id="Lastname" name="sname" placeholder=
+				"Surname" type="text" required>
+			</div>
 		</div>
+		</div><br />
+		<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="DOB">Date of Birth:</label>
+				<input class="form-control input-sm" id="DOB" name="DOB"  type="Date" required>               
+			</div>
+			<div class="col-md">
+				<label for="Gender">Gender:</label>
+
+				<select class="form-control input-sm" name="sex" id="gender">
+					<option value="">Select Gender</option>
+					<option value="male">Male</option>
+    				<option value="female">Female</option>
+				</select> 
+			</div>
+		</div>
+		</div>
+	<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="Age">Current Age:</label>
+
+			<input name="age" type="hidden" value="">
+			<input class="form-control input-sm" id="Age" name="age"  type="number" value="" required>
+			</div>
+			<div class="col-md">
+			<label for="PhysicalAddress">Physical Address:</label>
+
+			<input name="sex" type="hidden" value="">
+			<input class="form-control input-sm" id="Address" name="address" value="" placeholder=
+				"Address" type="text" required>
+			</div>
+		</div>
+		</div><br />
+		<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+				<label for="Phone">Mobile Phone</label>
+
+			<input name="phone" type="hidden" value="">
+			<input class="form-control input-sm" id="Phone" name="phone" placeholder=
+				"Phone No." type="number" required>
+			</div>
+			<div class="col-md">
+			<label for="Occupation">Occupation:</label>
+
+		<select class="form-control input-sm" name="occupation" id="Occupation">
+			<option>healthcare provider</option>
+			<option>teacher</option>
+			<option>banker</option>
+			<option>farmer</option>
+			<option>transport</option>
+			<option>trader</option>
+			<option>Others</option>
+
+		</select> 
+			</div>
+		</div>
+	</div><br />
+		<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="BloodGroup">Choose Blood Group:</label>
+
+				<select class="form-control input-sm" name="bloodgroup" id="BloodGroup">
+				<option value="">Choose Blood Group</option>
+					<option>A</option>
+					<option>B</option>
+					<option>AB</option>
+					<option>O</option>
+		
+				</select> 
+			</div> 
+			<div class="col-md">
+			<label for="MaritalStatus">Marital Status:</label>
+
+			<select class="form-control input-sm" name="maritalstatus" id="maritalstatus">
+			<option value="">Choose</option>
+				<option>single</option>
+				<option>married</option>
+				<option>divorced</option>
+				<option>widowed</option>
+			
+			</select> 
+			</div>
+		</div>
+		</div><br />
+		<div class="form-group">
+			<div class="form-row">
+				<div class="col-md">
+				<label for="Phone">Relative's Phone:</label>
+
+				<input name="phone" type="hidden" value="">
+				<input class="form-control input-sm" id="Phone" name="relat_phone" placeholder=
+				"Contact No:" type="number" required>
+			</div>
+				<div class="col-md">
+			<label for="RelativesName">Relative's Name:</label>
+				<input class="form-control input-sm" id="RelativesName" name="relat_name"  type="text" placeholder="Relatives Name">               
+			</div>
+			</div>
+		</div><br>
+	<h3 style="text-center">Vitals</h3>
+		<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="Temperature">Temperature:</label>
+
+			<input name="temp" type="hidden" value="">
+			<input class="form-control input-sm" id="Temperature" name="temp" placeholder=
+				"Temperature" type="number" required>
+			</div>
+			<div class="col-md">
+			<label for="bp">B/P:</label>
+
+			<input name="role" type="hidden" value="">
+			<input class="form-control input-sm" id="BP" name="bp" placeholder=
+				"B/P" type="number" required>
+			</div>
+		</div>
+		</div><br />
+		<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="Pulse">Pulse Rate:</label>
+
+			<input name="pulse" type="hidden" value="">
+			<input class="form-control input-sm" id="Pulse" name="pulse" placeholder=
+				"Pulse" type="number" required>
+			</div>
+			<div class="col-md">
+			<label for="Weight">Weight (kg):</label>
+
+			<input name="weight" type="hidden" value="">
+			<input class="form-control input-sm" id="Weight" name="weight" placeholder=
+				"Weight" type="number" required>
+			</div>
+		</div>
+	</div> <br />
+	<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="Height">Height (m):</label>
+
+			<input name="height" type="hidden" value="">
+			<input class="form-control input-sm" id="Height" name="height" placeholder=
+				"Height" type="number" required>
+			</div>
+			<div class="col-md">
+			<label for="PregnantStatus">Is Pregnant?</label>
+
+			<select class="form-control input-sm" id="pregnant" name="preg_status">
+    			<option value="yes">Yes</option>
+    			<option value="no">No</option>
+  			</select>
+			</div>
+		</div>
+	</div><br />
+	<div class="form-group">
+		<div class="form-row">
+			<div class="col-md">
+			<label for="DOB">Enrollment Date:</label>
+				<input class="form-control input-sm" id="Date" name="date"  type="Date" required>               
+		</div>
+      <div class="col-md">
+    	<label  for="Comments">Type Comments Here:</label>
+
+    		<input name="comments" type="hidden" value="">
+      	<textarea class="form-control input-sm" id="Comments" name="comments" placeholder=
+          "Comments" required></textarea>
+      </div>
+	</div>
+</div>
+<button class="btn btn-primary btn-block" name="submit" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+	</form>
+	<?php
+      if(isset($_POST['submit'])){
+		$fname = $_POST['fname'];
+        $sname = $_POST['sname'];
+		$DOB = $_POST['DOB'];
+		$sex = $_POST['sex'];
+        $age = $_POST['age'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+		$occupation = $_POST['occupation'];
+        $bloodgroup = $_POST['bloodgroup'];
+		$maritalstatus = $_POST['maritalstatus'];
+		$relat_name = $_POST['relat_name'];
+		$relat_phone = $_POST['relat_phone'];
+		$temp = $_POST['temp'];
+		$bp = $_POST['bp'];
+		$pulse = $_POST['pulse'];
+		$weight = $_POST['weight'];
+		$height = $_POST['height'];
+        $preg_status = $_POST['preg_status'];
+		$date = $_POST['date'];
+		$comments = $_POST['comments'];
+        
+        require '../includes/connect.php';
+
+      $query = "INSERT INTO patient VALUES ('','$fname','$sname','$DOB','$age','$address','$phone','$maritalstatus','$sex','$bloodgroup','$occupation','$relat_name','$relat_phone','$temp','$bp','$pulse','$weight','$height','$preg_status','$comments','$date')";
+
+                    $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                    ?>
+                     <script type="text/javascript">
+            alert("Patient enrolled Successfully.");
+            window.location = "patient.php";
+        </script>
+         <?php
+             }               
+        ?>  
+
+
+
 		<?php 
+			/*extract($_POST);
+			if (isset($btn) && !empty($fname) && !empty($sname) && !empty($DOB) && !empty($sex) && !empty($age) && !empty($address) && !empty($phone) && !empty($occupation) && !empty($bloodgroup) && !empty($maritalstatus) && !empty($relat_phone) && !empty($relat_name) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($date) && !empty($comments)) {
+				require "../includes/admin.php";
+				addpatient();
+			}*/
+			 ?>
+		
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+	<?php 
 		include "includes/footer.php";
 		 ?>
 	</div>
+<!-- Bootstrap core JavaScript-->
+<!-- Loading Scripts -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables.bootstrap.min.js"></script>
+<script>
+  const genderSelect = document.getElementById('gender');
+  const pregnantSelect = document.getElementById('pregnant');
+  
+  genderSelect.addEventListener('change', () => {
+    if (genderSelect.value === 'male') {
+      pregnantSelect.disabled = true;
+      pregnantSelect.value = 'no'; // Set default value to 'no'
+    } else {
+      pregnantSelect.disabled = false;
+    }
+  });
+</script>
+
 </body>
 </html>

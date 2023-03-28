@@ -13,7 +13,7 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Healthcare Provider-HRS</title>
+  <title>All Patient-HRS</title>
    <!-- Bootstrap core CSS-->
    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
@@ -31,30 +31,6 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
          border-radius: 5px;
        
        }
-	   #dataTable {
-  			font-family: Arial, Helvetica, sans-serif;
-  			border-collapse: collapse;
-  			width: 100%;
-	}
-		#cdataTable td, #dataTable th {
-  			border: 1px solid #ddd;
- 			 padding: 8px;
-			 color: white;
-	
-		}
-		#dataTable th {
-  			padding-top: 12px;
-  			padding-bottom: 12px;
-  			text-align: left;
-  			background-color: #04AA6D;
-  			color: white;
-		}
-		.table thead tr{
-			color: #25c346;
-  			background: #fff;
-  			text-align: left;
-  			font-weight: bold;
-		}
    </style>
 </head>
  <body class="fixed-nav sticky-footer" id="page-top">
@@ -67,7 +43,7 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 		  	<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
         		<li class="breadcrumb-item">
-          			<a href="index.php" style='color:#000;'>Healthcare Provider</a>
+          			<a href="index.php" style='color:#000;'>Patients Medical Interactions</a>
        		 	</li>
         	<li class="breadcrumb-item active">Registry Panel</li>
       	</ol>
@@ -76,40 +52,34 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form><br />
         <div class="card mb-3">
-		<?php
-					
-					require '../includes/connect.php';
-					$id = isset($_GET['id']) ? $_GET['id'] : '';
-					$query = $con->query("SELECT * FROM `patient` WHERE `id`='$id'");
-					while($fetch = $query->fetch_array()){
-				?>
-        	
+		<div class="card-header">
+            <i class="fa fa-table"></i>All Patients &nbsp;&nbsp;<a href="addpatient.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>Add New</a></div>
 
-            <i class="fa fa-table"></i><h3><?php echo $fetch['fname']." ".$fetch['sname'];?></h3> <br><h5 style="color:blue">Age:<?php echo $fetch['age'];?>years old</h5><br> <h5 style="color:green">Enrollment Date:<?php echo $fetch['date'];?></h5>
-		</div>
-		<?php
-			}
-		?>
 		<div class="card-body">
-			<h4 class="text-center">Healthcare Provider</h4>
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
 			<thead class="alert-info">
 				<tr>
-					<th>ID</th>
-					<th>Name</th>
-					<th>Gender</th>
-					<th>Date</th>
+					<th>Id</th>
+					<th>Firstname</th>
+					<th>Surname</th>
+					<th>Sex</th>
+					<th>Personal Information</th>
+					<th>Pharmacy</th>
+					<th>Symptoms</th>
+					<th>Lab Orders</th>
+					<th>Results & Investigations</th>
 					<th>Provider</th>
-					<th>Price</th>
+					
 				</tr>
+		</thead>
 				<?php 
-				require '../includes/doctor.php';
-				provider();
+				require '../includes/registry.php';
+				patients();
 				 ?>
 			</table>
 			</div>
- 	</div>
-</div>
+ 		</div>
+	</div>
 </div>
 </div>
 <?php 
