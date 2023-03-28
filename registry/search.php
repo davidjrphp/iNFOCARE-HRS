@@ -13,7 +13,7 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>All Patient</title>
+  <title>Search Patient</title>
    <!-- Bootstrap core CSS-->
    <!-- Bootstrap core CSS-->
    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
@@ -77,7 +77,7 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
       </form><br />
         <div class="card mb-3">
         <div class="card-header">
-            <i class="fa fa-table"></i> Serach Result &nbsp;&nbsp;<a href="adduser.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>Add New</a>
+            <i class="fa fa-table"></i> Serach Result &nbsp;&nbsp;<a href="addpatient.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>Add New</a>
 		</div>
             <div class="card-body">
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
@@ -68,9 +68,9 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 		  	<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
         		<li class="breadcrumb-item">
-          			<a href="index.php" style='color:#000;'>Complaints Interaction</a>
+          			<a href="index.php" style='color:#000;'>Dashboard</a>
        		 	</li>
-        	<li class="breadcrumb-item active">Admin Panel</li>
+        	<li class="breadcrumb-item active">Registry Panel</li>
       	</ol>
 	  <form action="searchrep.php" class="d-flex" role="search">
         <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">

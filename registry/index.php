@@ -146,14 +146,14 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 				echo "<br><b style='color:#fff; font-family:Arial; font-size:60px;'>".$row = mysqli_num_rows($query)."</b>"; 
 				 ?></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="">
+            <a class="card-footer text-white clearfix small z-1" href="users.php">
               <span class="float-left">Healthcare Providers</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>
             </a>
           </div>
-        </div><br />
+        </div><br>
 		<div class="col-sm-3 col-sm-3 mb-3">
           <div class="card text-white bg-danger o-hidden h-100">
             <div class="card-body">
@@ -163,13 +163,13 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
               <div class="mr-5">  <?php
 				require_once "../includes/connect.php";
 
-				$sql = "SELECT * FROM hospital.users WHERE `type`='Accountant'";
+				$sql = "SELECT * FROM hospital.patient";
 				$query = mysqli_query($con, $sql);
 				echo "<br><b style='color:#fff; font-family:Arial; font-size:60px;'>".$row = mysqli_num_rows($query)."</b>"; 
 				 ?></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="">
-              <span class="float-left">Accountants</span>
+            <a class="card-footer text-white clearfix small z-1" href="patient.php">
+              <span class="float-left">Total Patients</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>

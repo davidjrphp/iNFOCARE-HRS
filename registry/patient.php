@@ -31,6 +31,7 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
          border-radius: 5px;
        
        }
+	   
    </style>
 </head>
  <body class="fixed-nav sticky-footer" id="page-top">

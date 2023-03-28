@@ -17,7 +17,7 @@
           <i class="fas fa-patients"></i>
           <span class="nav-item">Register Patient</span>
         </a></li><br><br>
-        <li><a href="patients.php" class="logo">
+        <li><a href="patient.php" class="logo">
 		<img src="../assets/img/patient.png">
           <i class="fas fa-queues-cog"></i>
           <span class="nav-item">Patients</span>
