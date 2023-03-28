@@ -94,8 +94,8 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 			<label for="Sex">Gender:</label>
 
 			<select class="form-control input-sm" name="sex" value="<?php echo $row['sex']; ?>" id="Sex">
-				<option value="MALE">MALE</option>
-				<option value="FEMALE">FEMALE</option>
+				<option>MALE</option>
+				<option>FEMALE</option>
 			
 			</select> 
 			</div>
@@ -268,12 +268,51 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 </fieldset>
 		<button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
 	</form>
+
+	<?php
+      if(isset($_POST['submit'])){
+		$fname = $_POST['fname'];
+        $sname = $_POST['sname'];
+		$DOB = $_POST['DOB'];
+		$sex = $_POST['sex'];
+        $age = $_POST['age'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+		$occupation = $_POST['occupation'];
+        $bloodgroup = $_POST['bloodgroup'];
+		$maritalstatus = $_POST['maritalstatus'];
+		$relat_name = $_POST['relat_name'];
+		$relat_phone = $_POST['relat_phone'];
+		$temp = $_POST['temp'];
+		$bp = $_POST['bp'];
+		$pulse = $_POST['pulse'];
+		$weight = $_POST['weight'];
+		$height = $_POST['height'];
+        $preg_status = $_POST['preg_status'];
+		$date = $_POST['date'];
+		$comments = $_POST['comments'];
+        
+       
+
+		$query = "UPDATE patient SET fname = '$fname',
+		sname = '$sname', DOB = '$DOB', sex = '$sex', age = '$age', address = '$address', phone = '$phone', occupation = '$occupation', bloodgroup = '$bloodgroup', maritalstatus = '$maritalstatus', relat_name = '$relat_phone', temp = '$temp', bp = '$bp', pulse = '$pulse', weight = '$weight', relat_name = '$height', preg_status = '$preg_status', date = '$date', comments = '$comments'
+		WHERE id = '$id'";
+	  $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                    ?>
+                     <script type="text/javascript">
+            alert("Patient added Successfully.");
+            window.location = "pstient.php";
+        </script>
+         <?php
+             }               
+        ?>  
+
 		<?php 
-			extract($_POST);
+			/*extract($_POST);
 			if (isset($btn) && !empty($fname) && !empty($sname) && !empty($phone) && !empty($maritalstatus) && !empty($address) && !empty($parentsname) && !empty($sex) && !empty($DOB) && !empty($occupation) && !empty($bloodgroup) && !empty($date) && !empty($relat_phone) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($comments)) {
 				require "../includes/admin.php";
 				addpatient();
-			}
+			}*/
 			 ?>
 		
 		</div>

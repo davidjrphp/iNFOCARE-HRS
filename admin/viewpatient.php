@@ -49,7 +49,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         	<li class="breadcrumb-item active">Admin Panel</li>
       	</ol>
 	  <form action="searchrep.php" class="d-flex" role="search">
-        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search by ID" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form><br />
         <div class="card mb-3">
@@ -79,8 +79,8 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<th>Age</th>
 					<th>Gender</th>
 					<th>Blood Group</th>
-					<th>Address</th>
 					<th>Phone</th>
+					<th>Address</th>
 					<th>Maritalstatus</th>
 					<th>Occupation</th>
 					<th>Relat. Name</th>
@@ -101,12 +101,12 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 					<td><?php echo $fetch['sname']?></td>
 					<td><?php echo $fetch['DOB']?></td>
 					<td><?php echo $fetch['age']?></td>
-					<td><?php echo $fetch['sex']?></td>
+					<td><?php echo $fetch['occupation']?></td>
 					<td><?php echo $fetch['bloodgroup']?></td>
 					<td><?php echo $fetch['address']?></td>
 					<td><?php echo $fetch['phone']?></td>
 					<td><?php echo $fetch['maritalstatus']?></td>
-					<td><?php echo $fetch['occupation']?></td>
+					<td><?php echo $fetch['sex']?></td>
                     <td><?php echo $fetch['relat_name']?></td>
 					<td><?php echo $fetch['relat_phone']?></td>
 				</tr>

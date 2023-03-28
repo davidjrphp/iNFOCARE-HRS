@@ -47,15 +47,13 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
        		 	</li>
         	<li class="breadcrumb-item active">Admin Panel</li>
       	</ol>
-	  <form action="searchrep.php" class="d-flex" role="search">
-        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">
+	  <form action="search.php" class="d-flex" role="search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search by ID" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form><br />
         <div class="card mb-3">
-        	
-
-            <i class="fa fa-table"></i>All Patients
-		</div>
+		<div class="card-header">
+            <i class="fa fa-table"></i>All Patients &nbsp;&nbsp;<a href="addpatient.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>Add New</a></div>
 
 		<div class="card-body">
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">

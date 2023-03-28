@@ -103,7 +103,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
              </div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="viewelders.php">
+            <a class="card-footer text-white clearfix small z-1" href="">
               <span class="float-left">Admins</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -125,7 +125,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 				echo "<br><b style='color:#fff; font-family:Arial; font-size:60px;'>".$row = mysqli_num_rows($query)."</b>"; 
 				 ?></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="minservant.php">
+            <a class="card-footer text-white clearfix small z-1" href="">
               <span class="float-left">Registry clerks</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -147,7 +147,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 				echo "<br><b style='color:#fff; font-family:Arial; font-size:60px;'>".$row = mysqli_num_rows($query)."</b>"; 
 				 ?></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="baptised.php ">
+            <a class="card-footer text-white clearfix small z-1" href="">
               <span class="float-left">Healthcare Providers</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
@@ -169,7 +169,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 				echo "<br><b style='color:#fff; font-family:Arial; font-size:60px;'>".$row = mysqli_num_rows($query)."</b>"; 
 				 ?></div>
             </div>
-            <a class="card-footer text-white clearfix small z-1" href="unbaptised.php">
+            <a class="card-footer text-white clearfix small z-1" href="">
               <span class="float-left">Accountants</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>

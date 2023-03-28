@@ -168,7 +168,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
       <label for="Password">Confirm Password:</label>
 
 	  <input name="password2" type="hidden" value="">
-       <input class="form-control input-sm" id="pwd" name="password" value="" placeholder=
+       <input class="form-control input-sm" id="pwd" name="password2" value="" placeholder=
           "Retype" type="password" required>
     </div>
   </div>
@@ -177,21 +177,34 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 }
 ?>
 <br />  
-  <button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span>Save</button>
+  <button class="btn btn-primary btn-block" name="submit" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span>Save</button>
   </form>
-  <?php 
-		extract($_POST);
-		if (isset($btn) && !empty($fname)&& !empty($sname)&& !empty($password)&& !empty($password2)) {
-		if ($password != $password2) {
-		echo "<br><b style='color:red;font-size:14px;font-family:Arial;'>Password Must Match</b>";
-		}
-		else{
-		require "../includes/admin.php";
-		settings();
-		}
-				
-	} 
-?>
+  <?php
+      if(isset($_POST['submit'])){
+		    $fname = $_POST['fname'];
+        $sname = $_POST['sname'];
+		    $password2 = $_POST['password2'];
+		    $password = $_POST['password'];
+	    if ($password != $password2) {
+		  echo "<br><b style='color:red;font-size:14px;font-family:Arial;'>Password Must Match</b>";
+	}
+	else{
+		$pass = ($password);
+		$name = $_SESSION['admin'];
+		$type = $_SESSION['type'];
+      
+
+		$query = "UPDATE hospital.users SET `fname`='$fname',`sname`='$sname',`password`='$pass' WHERE `username`='$name' AND `type`='$type'";
+	  $result = mysqli_query($con, $query) or die(mysqli_error($con));
+  ?>
+    <script type="text/javascript">
+      alert("Patient added Successfully.");
+            window.location = "settings.php";
+     </script>
+ <?php
+    } }            
+  ?> 
+  
   
   </div>
 </div>
@@ -212,8 +225,8 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
   <script>
       function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
 
 // Close the dropdown menu if the user clicks outside of it
 window.onclick = function(event) {
@@ -229,7 +242,6 @@ window.onclick = function(event) {
   }
 }
 
-  </script>
-
+</script>
 </body>
 </html>

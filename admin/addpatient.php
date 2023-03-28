@@ -57,13 +57,14 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         <div class="card-body"> 
 
 		<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
-	<h3 style="text-center">Patient's Information</h3>
-		<div class="form-group">
-		<div class="form-row">
-			<div class="col-md">
-			<label for="Firstname">First Name:</label>
+	<h3 >Patient's Information</h3>
 
-			<input name="f_name" type="hidden" value="">
+		<div class="form-group">
+			<div class="form-row">
+				<div class="col-md">
+				<label for="Firstname">First Name:</label>
+
+				<input name="fname" type="hidden" value="">
 			<input class="form-control input-sm" id="Firstname" name="fname" placeholder=
 				"First Name" type="text" required>
 			</div>
@@ -83,13 +84,13 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 				<input class="form-control input-sm" id="DOB" name="DOB"  type="Date" required>               
 			</div>
 			<div class="col-md">
-			<label for="Sex">Gender:</label>
+				<label for="Gender">Gender:</label>
 
-			<select class="form-control input-sm" name="sex" id="Sex">
-				<option value="MALE">MALE</option>
-				<option value="FEMALE">FEMALE</option>
-			
-			</select> 
+				<select class="form-control input-sm" name="sex" id="gender">
+					<option value="">Select Gender</option>
+					<option value="male">Male</option>
+    				<option value="female">Female</option>
+				</select> 
 			</div>
 		</div>
 		</div>
@@ -123,13 +124,13 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 			<label for="Occupation">Occupation:</label>
 
 		<select class="form-control input-sm" name="occupation" id="Occupation">
-			<option value="healthcare Provider">Healthcare Provider</option>
-			<option value="teacher">Teacher</option>
-			<option value="banker">Banker</option>
-			<option value="farmer">Farmer</option>
-			<option value="transport">Transport</option>
-			<option value="trader">Trader</option>
-			<option value="others">Others</option>
+			<option>healthcare provider</option>
+			<option>teacher</option>
+			<option>banker</option>
+			<option>farmer</option>
+			<option>transport</option>
+			<option>trader</option>
+			<option>Others</option>
 
 		</select> 
 			</div>
@@ -142,10 +143,10 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
 				<select class="form-control input-sm" name="bloodgroup" id="BloodGroup">
 				<option value="">Choose Blood Group</option>
-					<option value="A">A</option>
-					<option value="B">B</option>
-					<option value="AB">AB</option>
-					<option value="O">O</option>
+					<option>A</option>
+					<option>B</option>
+					<option>AB</option>
+					<option>O</option>
 		
 				</select> 
 			</div> 
@@ -154,30 +155,30 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
 			<select class="form-control input-sm" name="maritalstatus" id="maritalstatus">
 			<option value="">Choose</option>
-				<option value="single">Single</option>
-				<option value="Married">Married</option>
-				<option value="Divorced">Divorced</option>
-				<option value="Widowed">Widowed</option>
+				<option>single</option>
+				<option>married</option>
+				<option>divorced</option>
+				<option>widowed</option>
 			
 			</select> 
 			</div>
 		</div>
 		</div><br />
 		<div class="form-group">
-		<div class="form-row">
-			<div class="col-md">
-			<label for="Phone">Relative's Phone:</label>
+			<div class="form-row">
+				<div class="col-md">
+				<label for="Phone">Relative's Phone:</label>
 
-			<input name="phone" type="hidden" value="">
-			<input class="form-control input-sm" id="Phone" name="relat_phone" placeholder=
+				<input name="phone" type="hidden" value="">
+				<input class="form-control input-sm" id="Phone" name="relat_phone" placeholder=
 				"Contact No:" type="number" required>
 			</div>
 				<div class="col-md">
-			<label for="ParentsName">Relative's Name:</label>
-				<input class="form-control input-sm" id="ParentsName" name="relat_name"  type="text" >               
+			<label for="RelativesName">Relative's Name:</label>
+				<input class="form-control input-sm" id="RelativesName" name="relat_name"  type="text" placeholder="Relatives Name">               
 			</div>
 			</div>
-		</div><br /> <br />
+		</div><br>
 	<h3 style="text-center">Vitals</h3>
 		<div class="form-group">
 		<div class="form-row">
@@ -225,15 +226,12 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 				"Height" type="number" required>
 			</div>
 			<div class="col-md">
-			<label for="PregnantStatus">Pregnant Status:</label>
+			<label for="PregnantStatus">Is Pregnant?</label>
 
-			<select class="form-control input-sm" name="preg_status" id="Pregnantstatus">
-			<option value="">Choose</option>
-				<option value="Pregnant">Pregnant</option>
-				<option value="Not Pregnant">Not Pregnant</option>
-				<option value="Not Applicable">Not Applicable</option>
-			
-			</select> 
+			<select class="form-control input-sm" id="pregnant" name="preg_status">
+    			<option value="yes">Yes</option>
+    			<option value="no">No</option>
+  			</select>
 			</div>
 		</div>
 	</div><br />
@@ -246,20 +244,59 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
       <div class="col-md">
     	<label  for="Comments">Type Comments Here:</label>
 
-    		<input name="subject" type="hidden" value="">
+    		<input name="comments" type="hidden" value="">
       	<textarea class="form-control input-sm" id="Comments" name="comments" placeholder=
-          "Comments" style="height: 100px" required></textarea>
+          "Comments" required></textarea>
       </div>
 	</div>
 </div>
-		<button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span>Save</button>
+<button class="btn btn-primary btn-block" name="submit" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
 	</form>
+	<?php
+      if(isset($_POST['submit'])){
+		$fname = $_POST['fname'];
+        $sname = $_POST['sname'];
+		$DOB = $_POST['DOB'];
+		$sex = $_POST['sex'];
+        $age = $_POST['age'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+		$occupation = $_POST['occupation'];
+        $bloodgroup = $_POST['bloodgroup'];
+		$maritalstatus = $_POST['maritalstatus'];
+		$relat_name = $_POST['relat_name'];
+		$relat_phone = $_POST['relat_phone'];
+		$temp = $_POST['temp'];
+		$bp = $_POST['bp'];
+		$pulse = $_POST['pulse'];
+		$weight = $_POST['weight'];
+		$height = $_POST['height'];
+        $preg_status = $_POST['preg_status'];
+		$date = $_POST['date'];
+		$comments = $_POST['comments'];
+        
+        require '../includes/connect.php';
+
+      $query = "INSERT INTO patient VALUES ('','$fname','$sname','$DOB','$age','$address','$phone','$maritalstatus','$sex','$bloodgroup','$occupation','$relat_name','$relat_phone','$temp','$bp','$pulse','$weight','$height','$preg_status','$comments','$date')";
+
+                    $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                    ?>
+                     <script type="text/javascript">
+            alert("User added Successfully.");
+            window.location = "patient.php";
+        </script>
+         <?php
+             }               
+        ?>  
+
+
+
 		<?php 
-			extract($_POST);
-			if (isset($save) && !empty($fname) && !empty($sname) && !empty($DOB) && !empty($sex) && !empty($age) && !empty($address) && !empty($phone) && !empty($occupation) && !empty($bloodgroup) && !empty($maritalstatus) && !empty($relat_phone) && !empty($relat_name) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($date) && !empty($comments)) {
+			/*extract($_POST);
+			if (isset($btn) && !empty($fname) && !empty($sname) && !empty($DOB) && !empty($sex) && !empty($age) && !empty($address) && !empty($phone) && !empty($occupation) && !empty($bloodgroup) && !empty($maritalstatus) && !empty($relat_phone) && !empty($relat_name) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($date) && !empty($comments)) {
 				require "../includes/admin.php";
 				addpatient();
-			}
+			}*/
 			 ?>
 		
 		</div>
@@ -270,15 +307,44 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 	<?php 
 		include "includes/footer.php";
 		 ?>
-		</div>
-		<!-- Bootstrap core JavaScript-->
-		<!-- Loading Scripts -->
-		<script src="../js/jquery.min.js"></script>
-			<script src="../js/bootstrap-select.min.js"></script>
-			<script src="../js/bootstrap.min.js"></script>
-			<script src="../js/jquery.dataTables.min.js"></script>
-			<script src="../js/dataTables.bootstrap.min.js"></script>
+	</div>
+<!-- Bootstrap core JavaScript-->
+<!-- Loading Scripts -->
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables.bootstrap.min.js"></script>
+<script>
+  const genderSelect = document.getElementById('gender');
+  const pregnantSelect = document.getElementById('pregnant');
+  
+  genderSelect.addEventListener('change', () => {
+    if (genderSelect.value === 'male') {
+      pregnantSelect.disabled = true;
+      pregnantSelect.value = 'no'; // Set default value to 'no'
+    } else {
+      pregnantSelect.disabled = false;
+    }
+  });
+</script>
 
 </body>
 </html>
+
+
+<form>
+  <label for="gender">Gender:</label>
+  <select id="gender" name="gender">
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  
+  <label for="pregnant">Pregnant status:</label>
+  <select id="pregnant" name="pregnant">
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+</form>
+
 

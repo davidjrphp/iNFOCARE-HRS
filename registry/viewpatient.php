@@ -69,8 +69,8 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 					<th>Age</th>
 					<th>Gender</th>
 					<th>Blood Group</th>
-					<th>Address</th>
 					<th>Phone</th>
+					<th>Address</th>
 					<th>Maritalstatus</th>
 					<th>Occupation</th>
 					<th>Relat. Name</th>

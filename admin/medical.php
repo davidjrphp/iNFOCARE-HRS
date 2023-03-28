@@ -72,8 +72,8 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
        		 	</li>
         	<li class="breadcrumb-item active"> Panel</li>
       	</ol>
-	  <form action="searchuser.php" method="get" class="d-flex" role="search">
-        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">
+	  <form action="searchdrug.php" method="get" class="d-flex" role="search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search by Name" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form><br />
         <div class="card mb-3">
@@ -97,6 +97,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 				pharmacy();
 				 ?>
 			</table>
+
 			</div>
 		</div>
 		</div>

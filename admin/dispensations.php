@@ -140,34 +140,45 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 
 			<input name="units_disp" type="hidden" value="">
 			<input class="form-control input-sm" id="UnitsDisp" name="units_disp" placeholder=
-				":" type="number" required>
-			</div>
-			<div class="col-md">
-			<label for="Form">Choose Form:</label>
-
-			<select class="form-control input-sm" name="drug_form" id="Form">
-			<option value="">Form</option>
-					<option value="capsules">capsules</option>
-					<option value="tablets">tablets</option>
-					<option value="drops">drops</option>
-					<option value="drops">injection</option>
-					<option value="solution">solution</option>
-					<option value="sachets">sachets</option>
-					<option value="teaspoon">teaspoon</option>
-			
-			</select> 
+				"" type="number" required>
 			</div>
 		</div>
 	</div><br />
 		
-		<button class="btn btn-primary btn-block" name="save" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+		<button class="btn btn-primary btn-block" name="submit" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
 	</form>
 	<?php 
-			extract($_POST);
+
+if(isset($_POST['submit'])){
+  $drug_price = $_POST['drug_price'];
+  $drug_name = $_POST['drug_name'];
+  $drug_strength = $_POST['drug_strength'];
+  $measurement = $_POST['measurement'];
+  $dose_item = $_POST['dose_item'];
+  $drug_form = $_POST['drug_form'];
+  $intake_freq = $_POST['intake_freq'];
+  $units_disp = $_POST['units_disp'];
+  
+  
+  require '../includes/connect.php';
+
+$query = "INSERT INTO pharmacy VALUES ('','$drug_name','$drug_strength','$measurement','$dose_item','$drug_form','$intake_freq','$units_disp', '$drug_price')";
+
+			  $result = mysqli_query($con, $query) or die(mysqli_error($con));
+			  ?>
+			   <script type="text/javascript">
+	  alert("User added Successfully.");
+	  window.location = "medical.php";
+  </script>
+   <?php
+	   }               
+  ?>  
+	   <?php
+			/*extract($_POST);
 			if (isset($btn) && !empty($drug_name) && !empty($drug_strength) && !empty($measurement) && !empty($dose_item) && !empty($drug_form) && !empty($intake_freq) && !empty($units_disp) && !empty($drug_price)) {
 				require "../includes/pharmacy.php";
 				dispensations();
-			}
+			}*/
 			 ?>
 		
 		</div>

@@ -93,8 +93,8 @@ function givendrugs()
 {
 	require "connect.php";
 			//$typee = $_SESSION['type'];
-			$id = $_GET['id'];
-			$sql = "SELECT * From hospital.medication WHERE  `patient_id`='$id'";
+	$id = $_GET['id'];
+	$sql = "SELECT * From hospital.medication WHERE  `patient_id`='$id'";
 	$query = mysqli_query($con,$sql);
 	while ($row = mysqli_fetch_array($query)) {
 		$ido = $row['patient_id'];
@@ -124,7 +124,7 @@ function givendrugs()
 function searchdrug()
 {
 			require 'connect.php';
-			$name = $_GET['s'];
+			$name = $_GET['search'];
 				$sql2 = "SELECT * FROM hospital.pharmacy WHERE `drug_name` LIKE '%$name%'";
 				$query2 = mysqli_query($con,$sql2);
 		while ($row2 = mysqli_fetch_array($query2)) {
@@ -167,10 +167,42 @@ function searchpatients()
 
 function pharmacy()
 {
-	@require 'connect.php';
+	
+require 'connect.php';
+
+// set the number of records per page
+$records_per_page = 5;
+
+// get the total number of records in the database
+$sql = "SELECT COUNT(*) FROM pharmacy";
+$result = mysqli_query($con, $sql);
+$total_records = mysqli_fetch_array($result)[0];
+
+// calculate the total number of pages
+$total_pages = ceil($total_records / $records_per_page);
+
+// get the current page number
+if (isset($_GET['page']) && is_numeric($_GET['page'])) {
+    $current_page = $_GET['page'];
+} else {
+    $current_page = 1;
+}
+
+// calculate the offset for the current page
+$offset = ($current_page - 1) * $records_per_page;
+
+// retrieve the records for the current page
+$sql = "SELECT * FROM pharmacy LIMIT $offset, $records_per_page";
+$result = mysqli_query($con, $sql);
+
+// display the records
+while ($row = mysqli_fetch_assoc($result))
+
+	
+	/*@require 'connect.php';
 	$sql = "SELECT * FROM hospital.pharmacy";
 	$query = mysqli_query($con,$sql);
-	while ($row = mysqli_fetch_array($query)) {
+	while ($row = mysqli_fetch_array($query))*/ {
 		echo "<tr height=30px'>";
 		echo "<td>".$row['drug_name']."</td>";
 		echo "<td>".$row['drug_strength']."</td>";
@@ -184,6 +216,22 @@ function pharmacy()
 	
 		echo "</tr>";
 	}
+	// display the pagination links
+	if ($total_pages > 1) {
+    echo "<div>";
+    for ($i = 1; $i <= $total_pages; $i++) {
+        if ($i == $current_page) {
+            echo "<span>$i</span>";
+        } else {
+            echo "<a href=\"medical.php?page=$i\">$i</a>";
+        }
+    }
+    echo "</div>";
+}
+
+// close the database connection
+mysqli_close($con);
+
 }
 
 function settings()
