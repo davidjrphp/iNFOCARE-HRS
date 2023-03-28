@@ -1,5 +1,5 @@
 <div class="footer">
 	<center>
-		<h5 style="color:#00000;"> &copy; <?php echo date("Y"); ?>@HRS|All Rights Reserved|By David & Racheal|</h5>
+		<snall style="color:#00000;"> copyright &copy; <?php echo date("Y"); ?> |iNFOCARE-HRS|Developed By David Mwelwa <br />All Rights Reserved</small>
 	</center>
 </div>

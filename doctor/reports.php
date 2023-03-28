@@ -4,15 +4,37 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale1.0">
-	<title>Doctor Dashboard - HRS</title>
-	<link rel="stylesheet" type="text/css" href="../assets/style.css">
-	<style type="text/css">
-	.statistics{
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Patient's Statistical Reports-HRS</title>
+   <!-- Bootstrap core CSS-->
+   <!-- Bootstrap core CSS-->
+   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+  <!--<link href="../assets/style/style2.css" rel="stylesheet" type="text/css">-->
+  <link rel="stylesheet" type="text/css" href="../assets/style.css">
+  
+  <style type="text/css" >
+	    button {
+         width: auto;
+         transition-duration: 0.4s;
+         font-size: 12px;
+		 margin-right: 10px;
+         text-align: center;
+         padding: 15px 32px;
+         float: right;
+         border-radius: 5px;
+       
+       }
+	   .statistics{
 		width:70%;
 		height: 230px;
 		margin: 0 auto;
@@ -26,18 +48,30 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 		.statistics p b{
 		margin-left: 35%;
 		}
-		</style>
+   </style>
 </head>
-<body>
-<br>
-	<div class="wrapper">
-	<?php
+ <body class="fixed-nav sticky-footer" id="page-top">
+ <?php
 		include "includes/header.php";
 		include "includes/left.php";
 	 ?>
-		<div class="right">
-		<div class="statistics">
-			<h4 align="center">My Patients Statistics</h4><hr>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+		  	<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+        		<li class="breadcrumb-item">
+          			<a href="index.php" style='color:#000;'>Dashboard</a>
+       		 	</li>
+        	<li class="breadcrumb-item active">Doctor's Panel</li>
+      	</ol>
+		  
+        <div class="card mb-3">
+        <div class="card-header">
+            <i class="fa fa-table"></i>Patient's Report 
+		</div>
+    <div class="card-body">
+        <div class="statistics">
+			<h4 class="text-center">My Patient's Statistics</h4><hr>
 			<p><b>Today:</b> <?php
 			require_once "../includes/connect.php";
 			$username = $_SESSION['doctor'];
@@ -91,9 +125,8 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 					echo mysqli_error($con);
 				}
 			?> Patients</p>
-		</div>
-		<center><br>
-			<form action="reports.php" method="POST">
+
+<form action="reports.php" method="POST">
 			<select name="day" class="form2">
 			<option value="">Choose Day</option>
 			<option>1</option>
@@ -188,13 +221,22 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 			}
 		}
 		?>
-		</center>
-		
-			
 		</div>
-		<?php 
-		include "includes/footer.php";
-		 ?>
-	</div>
+		</div>
+ </div>
+</div>
+</div>
+</div>
+<?php 
+	include "includes/footer.php";
+?>
+</div>
+ <!-- Bootstrap core JavaScript-->
+ <!-- Loading Scripts -->
+ <script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap-select.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@
       <ul>
         <li><a href="index.php" class="logo">
          <img src="../assets/img/photo-icon-home-logo-23.png">
+         <i class="fas fa-queues-cog"></i>
           <span class="nav-item">Home</span>
         </a></li>
         <li><a href="reception.php" class="logo">
@@ -37,15 +38,10 @@
           <i class="fas fa-list"></i>
           <span class="nav-item">Reports</span>
         </a></li>
-		<li><a href="patients.php" class="logo">
+		<li><a href="patient.php" class="logo">
 		<img src="../assets/img/patient.png">
           <i class="fas fa-patients"></i>
           <span class="nav-item">All Patients</span>
-        </a></li>
-        <li><a href="./settings.php" class="logo">
-		<img src="../assets/img/Settings-icon.png">
-          <i class="fas fa-cog"></i>
-          <span class="nav-item">Settings</span>
         </a></li>
       </ul>
     </nav>

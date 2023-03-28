@@ -192,7 +192,3 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
 	<script src="../js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>
-
-
-
-
