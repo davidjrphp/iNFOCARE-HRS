@@ -48,7 +48,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
        		 	</li>
         	<li class="breadcrumb-item active">Admin Panel</li>
       	</ol>
-	  <form action="searchuser.php" method="get" class="d-flex" role="search">
+	  <form action="search.php" method="get" class="d-flex" role="searchs">
         <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search by ID" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form>

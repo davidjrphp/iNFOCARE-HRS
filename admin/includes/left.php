@@ -4,6 +4,7 @@
       <ul>
         <li><a href="index.php" class="logo">
          <img src="../assets/img/photo-icon-home-logo-23.png">
+         <i class="fas fa-menorah"></i>
           <span class="nav-item">Home</span>
         </a></li>
         <li><a href="search.php" class="logo">

@@ -37,8 +37,7 @@ elseif (!empty($_SESSION['accounts'])&&!empty($_SESSION['type'])) {
 	<style type="text/css">
 	body
 	{
-		background-image: url("includes/images/p.jpg");
-		background-repeat: repeat;
+		background: white;
 		background-size: 100%;
 		
 	}
@@ -97,10 +96,10 @@ elseif (!empty($_SESSION['accounts'])&&!empty($_SESSION['type'])) {
 	</style>
 </head>
 <body>
-<br><br><br>
+<br><br><br><br><br><br>
 <div class="wrapper">
 	<div class="left">
-		Welcome To<br><br><b>Health Record System</b><br><b>(HRS)</b>
+		Welcome<br><br>To iNFOCARE<br><b>Health Record System</b><b><br><b>(HRS)</b>
 	</div>
 	<div class="right">
 		<h3>Please Login</h3><hr><br>
@@ -120,6 +119,6 @@ elseif (!empty($_SESSION['accounts'])&&!empty($_SESSION['type'])) {
 		
 	</div>
 </div><br><br>
-<center><i><h5>Produced By David Mwelwa & Racheal Mweemba<br>With Support from IHM Funding</h5><i></center>
+<center><i><h5>Developed By David Mwelwa <br /> (BSc.CS)</h5><i></center>
 </body>
 </html>
