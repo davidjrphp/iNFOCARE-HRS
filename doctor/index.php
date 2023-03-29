@@ -178,7 +178,7 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
           </div>
         </div>
       </div>
-	  <div style="padding-left:400px;padding-top:100px;">
+	  <div style="padding-left:400px;padding-top:60px;">
 			In your Dashboard you can do the following jobs,<br>
 			<ol>
 				<li>Add Symptoms </li><br>

@@ -4,23 +4,56 @@ if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale1.0">
-	<title>Pharmacy - HRS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Dispensation-HRS</title>
+   <!-- Bootstrap core CSS-->
+   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="../assets/style.css">
+  
+  <!--<link rel="stylesheet" type="text/css" href="../assets/sb-admin.css">-->
+  <style type="text/css" >
+	    button {
+         width: auto;
+         transition-duration: 0.4s;
+         font-size: 12px;
+         text-align: center;
+         display: block;
+         padding: 15px 32px;
+         border-radius: 5px;
+       
+       }
+   </style>
 </head>
-<body>
-<br>
-	<div class="wrapper">
-	<?php
+ <body class="fixed-nav sticky-footer" id="page-top">
+ <?php
 		include "includes/header.php";
 		include "includes/left.php";
 	 ?>
-		<div class="right"><b><br>
-		 <a href="medical.php" style="margin-left:10px;"><button class="btnlink">back</button></a><form action="searchdrug.php" method="get" style="float:right;margin-right:15px;"><input type="text" style="height:25px; width:180px;padding-left:15px;" name="s" placeholder="Search Drug By Name"></form><br><br>
+    <div class="content-wrapper">
+      <div class="container-fluid">
+      	<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+        		<li class="breadcrumb-item">
+          			<a href="index.php" style='color:#000;'>Dashboard</a>
+       		 	</li>
+        	<li class="breadcrumb-item active">Pharmacist Panel</li>
+      	</ol>
+	  <form action="search.php" method="get" class="d-flex" role="searchs">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search" placeholder="Search by ID" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+        <div class="card card-register mx-auto mt-2">
+          <div class="card-header">Drug Dispensation</div>
+        <div class="card-body"> 
 			<center>
 			<?php 
 				require '../includes/connect.php';
@@ -44,61 +77,122 @@ if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 					echo "Please dispense the following Drug(s): <br><b>".$row['medical']."</b>";
 					
 				}
-				 ?><br><br>
-				 <center><h3><b>Drug Details</b></h3></center><br>
-				<form action="pharmacy.php?id=<?php echo $id = $_GET['id']; ?>" method="POST">
-				<input type="number" required="required" name="price" class="form"placeholder="Enter Drug Price" style="width:170px;margin:0;">&nbsp;&nbsp;<input type="text" required="required" name="drug" class="form" style="width:170px;margin:0;" placeholder="Enter Drug Name"><br><br><br><br>
-				
-				<input type="number" name="strength" class="form" placeholder="Enter Drug Strength" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="measurement" class="form" style="height:32px; width:100px;margin:0;" required="required">
-					<option value=""></option>
-					<option>mg</option>
-					<option>mcg</option>
-					<option>gm</option>
-					<option>ml</option>
-				</select><br><br><br><br>																							
-				<input type="number" name="dosage" class="form" placeholder="dose/item" required="required">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="form" class="form" style="height:32px; width:100px;margin:0;" required="required">
-					<option value=""></option>
-					<option>capsules</option>
-					<option>injection</option>
-					<option>tablets</option>
-					<option>drops</option>
-					<option>solution</option>
-					<option>sachets</option>
-					<option>teaspoon</option>
-				</select><label for="Drug Form"><br><br><br><br>
-					<label for="Frequency"><select name="frequency" class="form" style="height:32px; width:100px;margin:0;" required="required">
-					<option value=""></option>
-					<option>od</option>
-					<option>td</option>
-					<option>bd</option>
-					<option>3/daily</option>
-					<option>o/week</option>
-					<option>2/week</option>
-					<option>3/week</option> 
-				</select></label>&nbsp;&nbsp; <input type="number" name="units" class="form" style="height:30px;width:95px;margin:0;" placeholder="" required="required"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="Drug Form"><select name="form" class="form" style="height:32px; width:100px;margin:0;" required="required">
-					<option value=""></option>
-					<option>capsules</option>
-					<option>injection</option>
-					<option>tablets</option>
-					<option>drops</option>
-					<option>solution</option>
-					<option>sachets</option>
-					<option>teaspoon</option>
-				</select></label><br><br><br><br>
-				<button class="btn btn-primary btn-block" name="save" type="save" ><span class="glyphicon glyphicon-floppy-save"></span>Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Clear" class="btnlink" name="btn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Finalize" class="btnlink" name="btn"><br><br>
+				 ?>
+				 </center><br>
+				 <div class="form-group">
+				 <div class="form-row">
+					 <div class="col-md">
+					 <label for="DrugPrice">Enter Drug Price:</label>
+	 
+					 <input name="drug_price" type="hidden" value="">
+					 <input class="form-control input-sm" id="DrugPrice" name="drug_price" placeholder=
+					 "Price" type="number" required>
+				 </div>
+					 <div class="col-md">
+						 <label for="Drugname">Enter Drug Name:</label>
+	 
+						 <input name="drug_name" type="hidden" value="">
+						 <input class="form-control input-sm" id="Drugname" name="drug_name" placeholder=
+						 "Drug" type="text" required>
+					 </div>
+				 </div>
+			 </div><br />
+			 <div class="form-group">
+			 <div class="form-row">
+				 <div class="col-md">
+				 <label for="Drugstrength">Enter Strength:</label>
+					 <input class="form-control input-sm" id="DrugStrength" name="drug_strength" placeholder="Strength" type="number" required>               
+				 </div>
+				 <div class="col-md">
+				 <label for="Units">Enter Units:</label>
+	 
+				 <select class="form-control input-sm" name="measurement" id="Units">
+					 <option value="mg">mg</option>
+					 <option value="mcg">mcg</option>
+					 <option value="mg">gm</option>
+					 <option value="mcg">ml</option>
+				 
+				 </select> 
+				 </div>
+			 </div>
+			 </div>
+		 <div class="form-group">
+			 <div class="form-row">
+				 <div class="col-md">
+				 <label for="Dosage">Dose/Item:</label>
+	 
+				 <input name="dose_item" type="hidden" value="">
+				 <input class="form-control input-sm" id="Dosage" name="dose_item"  type="number" value="" required>
+				 </div>
+				 <div class="col-md">
+				 <label for="Form">Choose Form:</label>
+	 
+				 <select class="form-control input-sm" name="drug_form" id="Form">
+				 <option value="">Form</option>
+						 <option value="capsules">capsules</option>
+						 <option value="tablets">tablets</option>
+						 <option value="drops">drops</option>
+						 <option value="drops">injection</option>
+						 <option value="solution">solution</option>
+						 <option value="sachets">sachets</option>
+						 <option value="teaspoon">teaspoon</option>
+				 
+				 </select> 
+				 </div>
+			 </div>
+			 </div><br />
+			 <div class="form-group">
+				 <div class="form-row">
+					 <div class="col-md">
+					 <label for="Frequency">Frequency:</label>
+	 
+					 <select class="form-control input-sm" name="intake_freq" id="Frequency">
+						 <option value="">Choose Frequency</option>
+						 <option value="o/d">o/d</option>
+						 <option value="bed">bed</option>
+						 <option value="3/d">3/d</option>
+						 <option value="1/week">1/week</option>
+						 <option value="2/week">2/week</option>
+						 <option value="3/week">3/week</option>
+				 
+				 </select> 
+				 </div>
+				 <div class="col-md">
+				 <label for="UnitsDisp">Units Disp.:</label>
+	 
+				 <input name="units_disp" type="hidden" value="">
+				 <input class="form-control input-sm" id="UnitsDisp" name="units_disp" placeholder=
+					 "" type="number" required>
+				 </div>
+			 </div>
+		 </div><br />
+		 	<button class="btn btn-primary btn-sm" name="save" type="submit">Submit</button>
+			<button class="btn btn-secondary btn-sm" type="reset" value="Clear" class="btnlink" name="btn">Clear</button>
+			<button class="btn btn-secondary btn-sm" type="submit" value="Finalize" class="btnlink" name="btn">Finilize</button>
+			
 			</form>
 			<?php 
 			extract($_POST);
-			if (isset($btn) && !empty($price) && !empty($drug) && !empty($strength) && !empty($measurement) && !empty($dosage) && !empty($frequency) && !empty($units) && !empty($form)) {
+			if (isset($save) && !empty($price) && !empty($drug) && !empty($strength) && !empty($measurement) && !empty($dosage) && !empty($frequency) && !empty($units) && !empty($form)) {
 				require "../includes/pharmacy.php";
 				dispensation();
 			}
 			 ?>
-			</center>
-		</div>
-		<?php 
-		include "includes/footer.php";
-		 ?>
-	</div>
+			</div>
+ 	</div>
+</div>
+</div>
+</div>
+<?php 
+	include "includes/footer.php";
+?>
+</div>
+<!-- Bootstrap core JavaScript-->
+ <!-- Loading Scripts -->
+ <script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap-select.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

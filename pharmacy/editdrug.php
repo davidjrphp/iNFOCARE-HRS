@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>

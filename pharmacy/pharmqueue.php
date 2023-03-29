@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
@@ -13,7 +13,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Complaints Interaction-HRS</title>
+  <title>Pharmacy Queue-HRS</title>
    <!-- Bootstrap core CSS-->
    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
 	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
@@ -26,12 +26,11 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
          transition-duration: 0.4s;
          font-size: 12px;
          text-align: center;
-         
+         display: inline-block;
          padding: 15px 32px;
          border-radius: 5px;
        
        }
-
 	   #dataTable {
   			font-family: Arial, Helvetica, sans-serif;
   			border-collapse: collapse;
@@ -68,43 +67,32 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
 		  	<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
         		<li class="breadcrumb-item">
-          			<a href="index.php" style='color:#000;'>Complaints Interaction</a>
+          			<a href="index.php" style='color:#000;'>Dashboard</a>
        		 	</li>
-        	<li class="breadcrumb-item active">Admin Panel</li>
+        	<li class="breadcrumb-item active">Pharmacist  Panel</li>
       	</ol>
 	  <form action="searchrep.php" class="d-flex" role="search">
         <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success" type="submit">Search</button>
       </form><br />
         <div class="card mb-3">
-		<?php
-					
-					require '../includes/connect.php';
-					$id = isset($_GET['id']) ? $_GET['id'] : '';
-					$query = $con->query("SELECT * FROM `patient` WHERE `id`='$id'");
-					while($fetch = $query->fetch_array()){
-				?>
-        	
-
-            <i class="fa fa-table"></i><h3><?php echo $fetch['fname']." ".$fetch['sname'];?></h3> <br><h5 style="color:blue">Age:<?php echo $fetch['age'];?>years old</h5><br> <h5 style="color:green">Enrollment Date:<?php echo $fetch['date'];?></h5>
+			<div class=card-header>
+            	<i class="fa fa-table"></i>Pharmacy
 		</div>
-		<?php
-			}
-		?>
+		
 		<div class="card-body">
-			<h4 class="text-center">Complaints Interaction</h4>
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
 			<thead class="alert-info">
 				<tr>
 					<th>ID</th>
-					<th>Name</th>
+					<th>Firstname</th>
+					<th>Surname</th>
 					<th>Gender</th>
-					<th>Date</th>
-					<th>Complaints</th>
+					<th>Prescription</th>
 				</tr>
 				<?php 
-				require '../includes/doctor.php';
-				complaints();
+				require '../includes/pharmacy.php';
+				patients();
 				 ?>
 			</table>
 			</div>

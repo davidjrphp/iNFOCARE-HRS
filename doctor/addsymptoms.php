@@ -81,7 +81,7 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 
 		<div class="form-check-inline">
 			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" name="viral_loads" value="">Viral Loads
+				<input type="checkbox" class="form-check-input" name="test" value="">Viral Loads
 			</label>
 			</div>
 			<div class="form-check-inline">
@@ -106,7 +106,7 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 				</div>
 				<div class="form-check-inline">
 				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" name="hgb" value="">HGB
+					<input type="checkbox" class="form-check-input" name="tests" value="">HGB
 				</label>
 				</div>
 			</fieldset>
