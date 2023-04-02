@@ -238,7 +238,7 @@ function addpatient()
 		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Added</b><br><br>";
 	}
 	else{
-		echo mysqli_error();
+		echo mysqli_error($con);
 	}
 }
 
@@ -264,7 +264,7 @@ function assigntodoctor()
 				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
 			}
 			else{
-				echo mysqli_error();
+				echo mysqli_error($con);
 			}
 	}
 	elseif ($doctor=="OPDDoctor") {
@@ -276,7 +276,7 @@ function assigntodoctor()
 				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
 			}
 			else{
-				echo mysqli_error();
+				echo mysqli_error($con);
 			}
 	}
 	elseif ($doctor=="ARTDoctor") {
@@ -288,20 +288,20 @@ function assigntodoctor()
 				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
 			}
 			else{
-				echo mysqli_error();
+				echo mysqli_error($con);
 			}
 	}
 	elseif ($doctor=="Dentist") {
 		$price = 2000;
 
-		$sql = "INSERT INTO hospital.medication VALUES ('','$id','recdoctor','','','','','','','','','$price','$doctor','','','','','$day','$month','$year')";
+		$sql = "INSERT INTO hospital.medication VALUES ('','$id','recdoctor','','','','','','','','','','$price','$doctor','','','','','$day','$month','$year')";
 
 			$query = mysqli_query($con,$sql);
 			if (!empty($query)) {
 				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
 			}
 			else{
-				echo mysqli_error();
+				echo mysqli_error($con);
 			}
 	}
 	
@@ -332,7 +332,7 @@ function updatepatient()
 		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Updated</b><br><br>";
 	}
 	else{
-		echo mysqli_error();
+		echo mysqli_error($con);
 	}
 }
 

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
@@ -55,10 +55,22 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 			}
 			 ?>
 			</center>
+			</div>
 		</div>
-		<?php 
+		</div>
+	</div>
+</div>
+	<?php 
 		include "includes/footer.php";
 		 ?>
-	</div>
+		</div>
+		<!-- Bootstrap core JavaScript-->
+		<!-- Loading Scripts -->
+		<script src="../js/jquery.min.js"></script>
+			<script src="../js/bootstrap-select.min.js"></script>
+			<script src="../js/bootstrap.min.js"></script>
+			<script src="../js/jquery.dataTables.min.js"></script>
+			<script src="../js/dataTables.bootstrap.min.js"></script>
+
 </body>
 </html>

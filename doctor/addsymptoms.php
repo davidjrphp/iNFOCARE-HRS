@@ -76,49 +76,47 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
   				<textarea class="form-control" rows="5" name="symptoms" id="symptoms"></textarea>
 		</div>
 				 
-			<fieldset style="height:180px;width:300px;margin:0;">
-				<legend>Order Labs:</legend>
+		
+				<h4>Order Labs:</h4>
+		<div class="form-group">
+	<!--<form method="post" action="update.php">-->
+		<input type="checkbox" name="tests[]" value="Viral Load"> Viral Load <br>
+		<input type="checkbox" name="tests[]" value="Creatinine"> Creatinine <br>
+		<input type="checkbox" name="tests[]" value="CD4 Count"> CD4 Count <br>
+		<input type="checkbox" name="tests[]" value="Malaria"> Malaria <br>
+		<input type="checkbox" name="tests[]" value="TB"> TB <br>
+		<input type="checkbox" name="tests[]" value="AST"> AST <br>
+		<input type="checkbox" name="tests[]" value="HGB"> HGB <br>
+		</div>
+	
+		<input type="submit" value="Send To Lab" class="btnlink" name="submit">
+	</form>
+<?php
 
-		<div class="form-check-inline">
-			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" name="test" value="">Viral Loads
-			</label>
-			</div>
-			<div class="form-check-inline">
-			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" name="creatinine" value="">Creatinine
-			</label>
-			</div>
-			<div class="form-check-inline">
-			<label class="form-check-label">
-				<input type="checkbox" class="form-check-input" name="cd4" value="">CD4 Count
-			</label>
-			</div>
-			<div class="form-check-inline">
-				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" name="malaria" value="">Malaria
-				</label>
-				</div>
-				<div class="form-check-inline">
-				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" name="ast" value="">AST
-				</label>
-				</div>
-				<div class="form-check-inline">
-				<label class="form-check-label">
-					<input type="checkbox" class="form-check-input" name="tests" value="">HGB
-				</label>
-				</div>
-			</fieldset>
-				<input type="submit" value="Send To Lab" class="btnlink" name="btn"><br><br>
-			</form>
-			<?php 
-			extract($_POST);
-			if (isset($btn) && !empty($symptoms)) {
-				require "../includes/doctor.php";
-				addsymptoms();
-			}
-			 ?>
+if(isset($_POST['submit'])){
+	$symptoms = $_POST['symptoms'];
+	$tests = $_POST['tests'];
+
+$tests_str = implode(",", $tests);
+
+if (!empty($symptoms)) {
+	$id = $_GET['id'];
+	require "../includes/connect.php";
+
+	$sql = "UPDATE hospital.medication SET `status`='laboratory',`symptoms`='$symptoms',`tests`='$tests_str' WHERE `id`='$id' ";
+	$query = mysqli_query($con, $sql);
+	if (!empty($query)) {
+		$day = date('d');
+		$month = date('m');
+		$year = date('Y');
+		$doctor = $_SESSION['doctor'];
+		$report = mysqli_query($con, "INSERT INTO `doctorreport` VALUES ('','$doctor','$id','$day','$month','$year')");
+		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Succesifully Sent</b>";
+	}
+}
+}
+?>
+
 			</div>
  	</div>
 </div>

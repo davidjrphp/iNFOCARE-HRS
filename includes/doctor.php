@@ -154,17 +154,13 @@ function addsymptoms()
 {	global $con;
 	$symptoms = trim(htmlspecialchars($_POST['symptoms']));
 	$test = trim(htmlspecialchars($_POST['tests']));
-	$test1 = trim(htmlspecialchars($_POST['test1']));
-	$test2 = trim(htmlspecialchars($_POST['test2']));
-	$test3 = trim(htmlspecialchars($_POST['test3']));
-	$test4 = trim(htmlspecialchars($_POST['test4']));
-	$test5 = trim(htmlspecialchars($_POST['test5']));
+	
 
 	if (!empty($symptoms)) {
 		$id = $_GET['id'];
 		@require_once "connect.php";
 
-		$sql = "UPDATE hospital.medication SET `status`='laboratory',`symptoms`='$symptoms',`tests`='$test',`test1`='$test1',`test2`='$test2',`test3`='$test3',`test4`='$test4',`test5`='$test5' WHERE `id`='$id' ";
+		$sql = "UPDATE hospital.medication SET `status`='laboratory',`symptoms`='$symptoms',`tests`='$test' WHERE `id`='$id' ";
 		$query = mysqli_query($con, $sql);
 		if (!empty($query)) {
 			$day = date('d');
@@ -191,11 +187,11 @@ function dispensation()
 			echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Succesifully Sent</b>";
 		}
 		else{
-			echo mysql_error();
+			echo mysql_error($con);
 		}
 	}
 	else{
-		echo mysql_error();
+		echo mysql_error($con);
 	}
 }
 

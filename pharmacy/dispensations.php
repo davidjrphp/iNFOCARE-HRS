@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
@@ -44,7 +44,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
       	<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
         		<li class="breadcrumb-item">
-          			<a href="index.php" style='color:#000;'>Pharmacy Update</a>
+          			<a href="index.php" style='color:#000;'>Dashboard</a>
        		 	</li>
         	<li class="breadcrumb-item active">Admin Panel</li>
       	</ol>

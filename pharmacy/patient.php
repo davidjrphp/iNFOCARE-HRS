@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
@@ -45,7 +45,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         		<li class="breadcrumb-item">
           			<a href="index.php" style='color:#000;'>Patients Medical Interactions</a>
        		 	</li>
-        	<li class="breadcrumb-item active">Admin Panel</li>
+        	<li class="breadcrumb-item active">Pharmacist Panel</li>
       	</ol>
 	  <form action="search.php" class="d-flex" role="search">
         <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search by ID" aria-label="Search">
@@ -53,7 +53,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
       </form><br />
         <div class="card mb-3">
 		<div class="card-header">
-            <i class="fa fa-table"></i>All Patients &nbsp;&nbsp;<a href="addpatient.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>Add New</a></div>
+            <i class="fa fa-table"></i>All Patients </div>
 
 		<div class="card-body">
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">

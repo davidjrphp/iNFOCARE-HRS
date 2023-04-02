@@ -28,7 +28,7 @@ function patients()
 function resultpatients()
 {
 	require "connect.php";
-		$id = $_GET['id'];
+	$id = isset($_GET['id']) ? $_GET['id'] : '';
 			//$typee = $_SESSION['type'];
 			$sql = "SELECT * From hospital.medication WHERE  `patient_id`='$id'";
 	$query = mysqli_query($con,$sql);

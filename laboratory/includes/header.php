@@ -1,8 +1,9 @@
 <div class="header">
-	<img src="../assets/img/doc.jpg" height="100px" width="70px" alt="logo"><br>
+	<img src="../assets/img/admin.png" height="90px" width="65px" alt="logo"><br>
 	<h4>Provider</h4>
 	<div class="headerleft">
-		<b><center><h3>Welcome To<br>Health Records System</h3></center></b>
+	<b><center><h4>Welcome To iNFOCARE <br> Health Records System</h4></center></b>
+	
 	</div>
 	<div class="headerright">
 		<b>
@@ -17,9 +18,10 @@
 
 <html>
 <head>
-	<title>Health Records System- Login</title>
+	<title>Health Records System - Login</title>
 <html>
-<head><title></title>
+<head><title>Put Image in HTML</title>
+
 </head>
 
 <center>
@@ -29,7 +31,6 @@
 
 </body></center>
 </html>
-
 <html>
 	<style type="text/css">
 	body

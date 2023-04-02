@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
+if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
@@ -46,7 +46,7 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
         		<li class="breadcrumb-item">
           			<a href="index.php" style='color:#000;'>Patient's Information</a>
        		 	</li>
-        	<li class="breadcrumb-item active">Admin Panel</li>
+        	<li class="breadcrumb-item active">Parmacist Panel</li>
       	</ol>
 	  <form action="searchrep.php" class="d-flex" role="search">
         <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search by ID" aria-label="Search">

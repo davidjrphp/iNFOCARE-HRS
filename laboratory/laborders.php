@@ -4,24 +4,96 @@ if (empty($_SESSION['laboratory']) OR empty($_SESSION['type'])) {
 	header("Location: ../index.php");
 }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Labaratorist Dashboard - HMS</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Lab Orders-HRS</title>
+   <!-- Bootstrap core CSS-->
+   <link rel="stylesheet" href="../css/bootstrap.css" type="text/css">
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
 	<link rel="stylesheet" type="text/css" href="../assets/style.css">
+  
+  <!--<link rel="stylesheet" type="text/css" href="../assets/sb-admin.css">-->
+  <style type="text/css" >
+	    button {
+         width: auto;
+         transition-duration: 0.4s;
+         font-size: 12px;
+         text-align: center;
+         display: inline-block;
+         padding: 15px 32px;
+         border-radius: 5px;
+       
+       }
+	   #dataTable {
+  			font-family: Arial, Helvetica, sans-serif;
+  			border-collapse: collapse;
+  			width: 100%;
+	}
+		#cdataTable td, #dataTable th {
+  			border: 1px solid #ddd;
+ 			 padding: 8px;
+			 color: white;
+	
+		}
+		#dataTable th {
+  			padding-top: 12px;
+  			padding-bottom: 12px;
+  			text-align: left;
+  			background-color: #04AA6D;
+  			color: white;
+		}
+		.table thead tr{
+			color: #25c346;
+  			background: #fff;
+  			text-align: left;
+  			font-weight: bold;
+		}
+   </style>
 </head>
-<body>
-<br>
-	<div class="wrapper">
-	<?php
+ <body class="fixed-nav sticky-footer" id="page-top">
+ <?php
 		include "includes/header.php";
 		include "includes/left.php";
 	 ?>
-		<div class="right"><br>
-				<a href="patient.php" style="margin-left:10px;"><button class="btnlink">back</button></a>
-					<br><b><center><u><h2>Lab Orders</h2></u></center> </b><br>
-			<table class="table" style="width:98% !important;">
+    <div class="content-wrapper">
+      <div class="container-fluid">
+		  	<!-- Breadcrumbs-->
+			<ol class="breadcrumb">
+        		<li class="breadcrumb-item">
+          			<a href="index.php" style='color:#000;'>Results & Investigations</a>
+       		 	</li>
+        	<li class="breadcrumb-item active">Lab Tech. Panel</li>
+      	</ol>
+	  <form action="searchrep.php" class="d-flex" role="search">
+        <input class="form-control me-2" style="height:40px; width:180px;padding-right:10px;" type="search" name="search"placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+      </form><br />
+        <div class="card mb-3">
+		<?php
+					
+					require '../includes/connect.php';
+					$id = isset($_GET['id']) ? $_GET['id'] : '';
+					$query = $con->query("SELECT * FROM `patient` WHERE `id`='$id'");
+					while($fetch = $query->fetch_array()){
+				?>
+        	
+
+            <i class="fa fa-table"></i><h3><?php echo $fetch['fname']." ".$fetch['sname'];?></h3> <br><h5 style="color:blue">Age:<?php echo $fetch['age'];?>years old</h5><br> <h5 style="color:green">Enrollment Date:<?php echo $fetch['date'];?></h5>
+		</div>
+		<?php
+			}
+		?>
+		<div class="card-body">
+			<h4 class="text-center">Lab Orders</h4>
+        <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">
+			<thead class="alert-info">
 				<tr>
 					<th>ID</th>
 					<th>Name</th>
@@ -35,10 +107,21 @@ if (empty($_SESSION['laboratory']) OR empty($_SESSION['type'])) {
 				laborders();
 				 ?>
 			</table>
-		</div>
-		<?php 
-		include "includes/footer.php";
-		 ?>
-	</div>
+			</div>
+ 	</div>
+</div>
+</div>
+</div>
+<?php 
+	include "includes/footer.php";
+?>
+</div>
+<!-- Bootstrap core JavaScript-->
+ <!-- Loading Scripts -->
+ <script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap-select.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.dataTables.min.js"></script>
+	<script src="../js/dataTables.bootstrap.min.js"></script>
 </body>
 </html>

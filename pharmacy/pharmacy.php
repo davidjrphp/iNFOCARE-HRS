@@ -166,18 +166,37 @@ if (empty($_SESSION['pharmacy']) OR empty($_SESSION['type'])) {
 				 </div>
 			 </div>
 		 </div><br />
-		 	<button class="btn btn-primary btn-sm" name="save" type="submit">Submit</button>
+		 	<button class="btn btn-primary btn-sm" name="save" type="submit">Save</button>
 			<button class="btn btn-secondary btn-sm" type="reset" value="Clear" class="btnlink" name="btn">Clear</button>
-			<button class="btn btn-secondary btn-sm" type="submit" value="Finalize" class="btnlink" name="btn">Finilize</button>
+			<button class="btn btn-success btn-sm" type="submit" value="Finalize" class="btnlink" name="submit">Finilize</button>
 			
 			</form>
 			<?php 
-			extract($_POST);
-			if (isset($save) && !empty($price) && !empty($drug) && !empty($strength) && !empty($measurement) && !empty($dosage) && !empty($frequency) && !empty($units) && !empty($form)) {
-				require "../includes/pharmacy.php";
-				dispensation();
-			}
-			 ?>
+				
+if(isset($_POST['submit'])){
+	$drug_price = $_POST['drug_price'];
+	$drug_name = $_POST['drug_name'];
+	$drug_strength = $_POST['drug_strength'];
+	$measurement = $_POST['measurement'];
+	$dose_item = $_POST['dose_item'];
+	$drug_form = $_POST['drug_form'];
+	$intake_freq = $_POST['intake_freq'];
+	$units_disp = $_POST['units_disp'];
+//$tests_str = implode(",", $tests);
+
+if (!empty($price)) {
+	$id = $_GET['id'];
+	@require_once "connect.php";
+
+	$sql = "UPDATE hospital.medication SET `status`='finish',`medical_price`='$drug_price',`medical`='$drug_name',`units_dispensed`='$units_disp',`drug_strength`='$drug_strength',`drug_units`='$measurement',`item_dose`='$dose_item',`drug_form`='$drug_form',`intake_freq`='$intake_freq'  WHERE `id`='$id'";
+	$query = mysqli_query($con,$sql);
+	if (!empty($query)) {
+		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Finilized!</b><br><br>";
+	}
+}
+}
+?>
+
 			</div>
  	</div>
 </div>
