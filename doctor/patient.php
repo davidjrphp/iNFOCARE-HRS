@@ -54,7 +54,7 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
       </form><br />
         <div class="card mb-3">
 		<div class="card-header">
-            <i class="fa fa-table"></i>All Patients &nbsp;&nbsp;<a href="addpatient.php" class="btn btn-primary  ">  <i class="fa fa-plus-circle fw-fa"></i>Add New</a></div>
+            <i class="fa fa-table"></i>All Patients </div>
 
 		<div class="card-body">
         <table class="table table-bordered" id="dataTable" cellspacing="0" style="width:100% !important;">

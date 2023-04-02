@@ -164,13 +164,13 @@ if (empty($_SESSION['admin']) OR empty($_SESSION['type'])) {
               <div class="mr-5">  <?php
 				require_once "../includes/connect.php";
 
-				$sql = "SELECT * FROM hospital.users WHERE `type`='Accountant'";
+				$sql = "SELECT * FROM patient";
 				$query = mysqli_query($con, $sql);
 				echo "<br><b style='color:#fff; font-family:Arial; font-size:60px;'>".$row = mysqli_num_rows($query)."</b>"; 
 				 ?></div>
             </div>
             <a class="card-footer text-white clearfix small z-1" href="">
-              <span class="float-left">Accountants</span>
+              <span class="float-left">Total Patients</span>
               <span class="float-right">
                 <i class="fa fa-angle-right"></i>
               </span>

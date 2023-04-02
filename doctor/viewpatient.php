@@ -146,7 +146,7 @@ if (empty($_SESSION['doctor']) OR empty($_SESSION['type'])) {
 					<td><?php echo $fetch['preg_status']?></td>
 					<td><?php echo $fetch['date']?></td>
 					<td class="text-center" > 
-						<a href="editpatient.php?id=<?php echo  $fetch["id"]; ?>" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
+						<a href="" class="edit_data4 btn btn-sm btn-primary "  title='Edit'><span class="fa fa-edit fw-fa"></span>Edit</a>
 					</td> 
 				</tr>
 				<?php
