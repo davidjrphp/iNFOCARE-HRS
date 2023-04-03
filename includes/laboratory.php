@@ -62,7 +62,8 @@ function addresult()
 				$sql = "UPDATE hospital.medication SET `status`='labdoctor',`test_results`='$results',`test_price`='$price' WHERE `id`='$id'";
 				$query = mysqli_query($con,$sql);
 				if (!empty($query)) {
-					echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Succesifully Sent</b><br><br>";
+					echo "<script>alert('Successfully Sent!'); window.location='patients.php'</script>"
+					//echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Succesifully Sent</b><br><br>";
 				}
 			}
 }
