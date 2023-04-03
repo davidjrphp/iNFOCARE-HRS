@@ -288,17 +288,6 @@ if (empty($_SESSION['registry']) OR empty($_SESSION['type'])) {
          <?php
              }               
         ?>  
-
-
-
-		<?php 
-			/*extract($_POST);
-			if (isset($btn) && !empty($fname) && !empty($sname) && !empty($DOB) && !empty($sex) && !empty($age) && !empty($address) && !empty($phone) && !empty($occupation) && !empty($bloodgroup) && !empty($maritalstatus) && !empty($relat_phone) && !empty($relat_name) && !empty($temp) && !empty($bp) && !empty($pulse) && !empty($weight) && !empty($height) && !empty($preg_status) && !empty($date) && !empty($comments)) {
-				require "../includes/admin.php";
-				addpatient();
-			}*/
-			 ?>
-		
 		</div>
 		</div>
 		</div>

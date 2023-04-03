@@ -235,7 +235,7 @@ function addpatient()
 	$query = mysqli_query($con,$sql);
 	//$query2 = mysqli_query($con,$sql2);
 	if (!empty($query)) {
-		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Added</b><br><br>";
+		echo "<script>alert('paatient Successfully Added!'); window.location='viewpatient.php'</script>";
 	}
 	else{
 		echo mysqli_error($con);
@@ -261,7 +261,7 @@ function assigntodoctor()
 
 			$query = mysqli_query($con,$sql);
 			if (!empty($query)) {
-				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
+				echo "<script>alert('Paatient Successfully Assigned!'); window.location='patient.php'</script>";
 			}
 			else{
 				echo mysqli_error($con);
@@ -273,7 +273,7 @@ function assigntodoctor()
 
 			$query = mysqli_query($con,$sql);
 			if (!empty($query)) {
-				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
+				echo "<script>alert('Paatient Successfully Assigned!'); window.location='patient.php'</script>";
 			}
 			else{
 				echo mysqli_error($con);
@@ -285,7 +285,7 @@ function assigntodoctor()
 
 			$query = mysqli_query($con,$sql);
 			if (!empty($query)) {
-				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
+				echo "<script>alert('Paatient Successfully Assigned!'); window.location='patient.php'</script>";
 			}
 			else{
 				echo mysqli_error($con);
@@ -298,7 +298,7 @@ function assigntodoctor()
 
 			$query = mysqli_query($con,$sql);
 			if (!empty($query)) {
-				echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Patient is Succesifully Assigned To Doctor</b><br><br>";
+				echo "<script>alert('Paatient Successfully Assigned!'); window.location='patient.php'</script>";
 			}
 			else{
 				echo mysqli_error($con);

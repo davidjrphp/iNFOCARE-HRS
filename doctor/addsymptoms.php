@@ -111,7 +111,7 @@ if (!empty($symptoms)) {
 		$year = date('Y');
 		$doctor = $_SESSION['doctor'];
 		$report = mysqli_query($con, "INSERT INTO `doctorreport` VALUES ('','$doctor','$id','$day','$month','$year')");
-		echo "<br><b style='color:#008080;font-size:14px;font-family:Arial;'>Succesifully Sent</b>";
+		echo "<script>alert('Successfully Sent!'); window.location='reception.php'</script>";
 	}
 }
 }
