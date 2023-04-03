@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2022 at 11:40 AM
+-- Generation Time: Apr 03, 2023 at 02:00 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -91,7 +91,15 @@ INSERT INTO `medication` (`id`, `patient_id`, `status`, `symptoms`, `tests`, `te
 (46, 1005, 'recdoctor', '', '', '', '', 0, 0, '', 0, '30000', 'Dentist', '', 0, 0, 0, 12, 11, 2022),
 (47, 1006, 'recdoctor', '', '', '', '', 0, 0, '', 0, '20000', 'ARTDoctor', '', 0, 0, 0, 12, 11, 2022),
 (48, 1006, 'recdoctor', '', '', '', '', 0, 0, '', 0, '', '20000', 'OPDDoctor', 0, 0, 0, 12, 11, 2022),
-(49, 1004, 'recdoctor', '', '', '', '', 0, 0, '', 0, '', '20000', 'ARTDoctor', 0, 0, 0, 12, 11, 2022);
+(49, 1004, 'laboratory', 'prolonged menstral periods', '', '', '', 0, 0, '', 0, '', '20000', 'ARTDoctor', 0, 0, 0, 12, 11, 2022),
+(50, 1013, 'recdoctor', '', '', '', '', 0, 0, '', 0, '', '1000', 'OPDDoctor', 0, 0, 0, 26, 3, 2023),
+(51, 1014, 'recdoctor', '', '', '', '', 0, 0, '', 0, '', '1000', 'OPDDoctor', 0, 0, 0, 28, 3, 2023),
+(52, 1006, 'recdoctor', '', '', '', '', 0, 0, '', 0, '', '1000', 'OPDDoctor', 0, 0, 0, 28, 3, 2023),
+(53, 1016, 'pharmacy', 'vrginal pain', '', 'fungal', 'Pharmadem cream, 25 ml', 0, 0, '', 0, '', '1000', 'ARTDoctor', 0, 30, 0, 28, 3, 2023),
+(54, 1014, 'laboratory', 'headache', '', '', '', 0, 0, '', 0, '', '1000', 'ARTDoctor', 0, 0, 0, 29, 3, 2023),
+(55, 1008, 'laboratory', 'headcahe', '', '', '', 0, 0, '', 0, '', '1000', 'ARTDoctor', 0, 0, 0, 29, 3, 2023),
+(56, 1001, 'laboratory', 'Heart Burns, Weakness  and headache', 'Creatinine,TB,HGB', '', '', 0, 0, '', 0, '', '1000', 'ARTDoctor', 0, 0, 0, 29, 3, 2023),
+(57, 1013, 'pharmacy', 'khhgddh', 'Viral Load,Creatinine,Malaria,TB', 'VL=23 copies\r\ncreatinine=87\r\nMalaria= ++\r\nTB=intermediate', 'INH, Paracetamol, DTG and Coathem', 0, 0, '', 0, '', '1000', 'ARTDoctor', 0, 150, 0, 29, 3, 2023);
 
 -- --------------------------------------------------------
 
@@ -103,16 +111,16 @@ CREATE TABLE `patient` (
   `id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL,
   `sname` varchar(100) NOT NULL,
+  `DOB` date DEFAULT current_timestamp(),
+  `age` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(25) NOT NULL,
   `maritalstatus` varchar(100) NOT NULL,
   `sex` varchar(10) NOT NULL,
   `bloodgroup` varchar(5) NOT NULL,
-  `birthyear` varchar(100) NOT NULL,
-  `birthmonth` int(25) NOT NULL,
-  `birthdate` int(25) NOT NULL,
   `occupation` varchar(100) NOT NULL,
-  `parentsname` varchar(100) NOT NULL,
+  `relat_name` varchar(255) NOT NULL,
+  `relat_phone` int(20) NOT NULL,
   `temp` varchar(20) NOT NULL,
   `bp` varchar(20) NOT NULL,
   `pulse` int(20) NOT NULL,
@@ -120,28 +128,31 @@ CREATE TABLE `patient` (
   `height` varchar(20) NOT NULL,
   `preg_status` varchar(20) NOT NULL,
   `comments` varchar(20) NOT NULL,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `fname`, `sname`, `address`, `phone`, `maritalstatus`, `sex`, `bloodgroup`, `birthyear`, `birthmonth`, `birthdate`, `occupation`, `parentsname`, `temp`, `bp`, `pulse`, `weight`, `height`, `preg_status`, `comments`, `date`) VALUES
-(1000, 'Annita', 'Malama', 'Garden', '0654507180', 'single', 'Female', 'A', '1999', 3, 14, 'Trader', 'Sylvia', '', '', 0, '', '', '', '', NULL),
-(1001, 'Enock', 'Phiri', 'lusaka', '123456789', '', 'Male', 'A', '1992', 0, 0, '', '', '', '', 0, '', '', '', '', NULL),
-(1002, 'Albertina', 'Mwale', 'chalala', '0973413534', 'single', 'Male', 'B', '2004', 4, 23, 'Banker', 'Beatrice', '56', '55', 34, '98', '65', 'pregnant', 'ggn', '2022-11-30'),
-(1003, 'Albertina', 'Mwale', 'chalala', '0973413534', 'single', 'Male', 'A', '2004', 4, 23, 'Banker', 'Judith', '45', '34435', 34, '43', '23', 'pregnant', 'emergency', '2022-11-16'),
-(1004, 'Mapalo', 'Nakamba', 'Meanwood', '0974563728', 'single', 'Female', 'B', '1999', 6, 13, 'Others', 'Getrude', '36', '200', 76, '58', '154', 'not pregnant', 'standard', '2022-11-12'),
-(1005, 'Elizabeth', 'Mwansa', 'L85', '0976453341', 'single', 'Female', 'O', '1998', 8, 16, 'Others', 'Olisa', '38', '230', 77, '60', '145', 'pregnant', 'emergency', '2022-11-12'),
-(1006, 'Queen', 'Milambo', 'L85', '0977564453', 'single', 'Female', 'A', '2000', 3, 15, 'Trader', 'Jane', '35', '178', 79, '66', '155', 'not pregnant', 'standard', '2022-11-12'),
-(1007, 'Mary', 'Banda', 'Garden House', '0775354468', 'single', 'Female', 'AB', '2002', 5, 27, 'Others', 'Margret', '37', '177', 77, '60', '144', 'not pregnant', 'emergency', '2022-11-12'),
-(1008, 'Alice', 'Ngwenya', 'Garden', '0776356211', 'single', 'Female', 'B', '2001', 9, 3, 'Healthcare Provider', 'Martha', '36', '134', 78, '69', '166', 'not pregnant', 'standard', '2022-11-12'),
-(1009, 'Leonard', 'Simuyamba', 'Roma Park', '0976453375', 'single', 'Male', 'AB', '1996', 7, 25, 'Teacher', 'Naomi', '35', '166', 83, '66', '170', 'not applicable', 'standard', '2022-11-12'),
-(1010, 'John', 'Mbewe', 'Chilenje', '0762399763', 'single', 'Male', 'B', '1996', 10, 19, 'Banker', 'Joy', '35', '140', 88, '67', '169', 'not applicable', 'standard', '2022-11-12'),
-(1011, 'Isaac', 'Silomba', 'K South', '0973551239', 'single', 'Male', 'A', '1996', 10, 4, 'Banker', 'Bertha', '35', '145', 87, '59', '145', 'not applicable', 'emergency', '2022-11-12'),
-(1012, 'Tina', 'Banda', 'L85', '0766412188', 'married', 'Female', 'AB', '2004', 2, 20, 'Others', 'Olisa', '37', '133', 77, '58', '150', 'not pregnant', 'standard', '2022-11-12'),
-(1013, 'Patrick', 'Koman', 'Chilenje', '0976701133', 'married', 'Male', 'A', '1992', 11, 12, 'Healthcare Provider', 'Albertina', '36', '162', 86, '70', '163', 'not applicable', 'standard', '2022-11-12');
+INSERT INTO `patient` (`id`, `fname`, `sname`, `DOB`, `age`, `address`, `phone`, `maritalstatus`, `sex`, `bloodgroup`, `occupation`, `relat_name`, `relat_phone`, `temp`, `bp`, `pulse`, `weight`, `height`, `preg_status`, `comments`, `date`) VALUES
+(1000, 'Annita', 'Malama', '2023-03-26', 0, 'Garden', '0654507180', 'single', 'Female', 'A', 'Trader', '', 0, '', '', 0, '', '', '', '', NULL),
+(1001, 'Enock', 'Phiri', '2023-03-26', 0, 'lusaka', '123456789', '', 'Male', 'A', '', '', 0, '', '', 0, '', '', '', '', NULL),
+(1002, 'Albertina', 'Mwale', '2023-03-26', 0, 'chalala', '0973413534', 'single', 'Male', 'B', 'Banker', '', 0, '56', '55', 34, '98', '65', 'pregnant', 'ggn', '2022-11-30'),
+(1003, 'Albertina', 'Mwale', '2023-03-26', 0, 'chalala', '0973413534', 'single', 'Male', 'A', 'Banker', '', 0, '45', '34435', 34, '43', '23', 'pregnant', 'emergency', '2022-11-16'),
+(1004, 'Mapalo', 'Nakamba', '2023-03-26', 0, 'Meanwood', '0974563728', 'single', 'Female', 'B', 'Others', '', 0, '36', '200', 76, '58', '154', 'not pregnant', 'standard', '2022-11-12'),
+(1005, 'Elizabeth', 'Mwansa', '2023-03-26', 0, 'L85', '0976453341', 'single', 'Female', 'O', 'Others', '', 0, '38', '230', 77, '60', '145', 'pregnant', 'emergency', '2022-11-12'),
+(1006, 'Queen', 'Milambo', '2023-03-26', 0, 'L85', '0977564453', 'single', 'Female', 'A', 'Trader', '', 0, '35', '178', 79, '66', '155', 'not pregnant', 'standard', '2022-11-12'),
+(1007, 'Mary', 'Banda', '2023-03-26', 0, 'Garden House', '0775354468', 'single', 'Female', 'AB', 'Others', '', 0, '37', '177', 77, '60', '144', 'not pregnant', 'emergency', '2022-11-12'),
+(1008, 'Alice', 'Ngwenya', '2023-03-26', 0, 'Garden', '0776356211', 'single', 'Female', 'B', 'Healthcare Provider', '', 0, '36', '134', 78, '69', '166', 'not pregnant', 'standard', '2022-11-12'),
+(1009, 'Leonard', 'Simuyamba', '2023-03-26', 0, 'Roma Park', '0976453375', 'single', 'Male', 'AB', 'Teacher', '', 0, '35', '166', 83, '66', '170', 'not applicable', 'standard', '2022-11-12'),
+(1010, 'John', 'Mbewe', '2023-03-26', 0, 'Chilenje', '0762399763', 'single', 'Male', 'B', 'Banker', '', 0, '35', '140', 88, '67', '169', 'not applicable', 'standard', '2022-11-12'),
+(1011, 'Isaac', 'Silomba', '2023-03-26', 0, 'K South', '0973551239', 'single', 'Male', 'A', 'Banker', '', 0, '35', '145', 87, '59', '145', 'not applicable', 'emergency', '2022-11-12'),
+(1012, 'Tina', 'Banda', '2023-03-26', 0, 'L85', '0766412188', 'married', 'Female', 'AB', 'Others', '', 0, '37', '133', 77, '58', '150', 'not pregnant', 'standard', '2022-11-12'),
+(1013, 'Patrick', 'Koman', '2023-03-26', 0, 'Chilenje', '0976701133', 'married', 'Male', 'A', 'Healthcare Provider', '', 0, '36', '162', 86, '70', '163', 'not applicable', 'standard', '2022-11-12'),
+(1014, 'Edmond', 'Matende', '1999-05-05', 0, '24', 'kabanana', '', 'trader', 'b', 'single', 'Paulin', 2147483647, '38', '179', 90, '63', '162', 'not applicable', '2023-03-31', '0000-00-00'),
+(1015, 'Moses', 'Kunda', '2002-03-12', 22, 'kamwala south', '', 'single', '', 'O', 'Others', 'Nathan', 85769475, '35', '200', 90, '60', '163', '', 'Emergency', '2023-04-01'),
+(1016, 'Nancy', 'Moyo', '2002-09-20', 21, 'kapiri', '', 'single', '', 'AB', 'Others', 'salome', 989846834, '34', '124', 78, '45', '120', 'no', 'Emergency', '2023-04-01');
 
 -- --------------------------------------------------------
 
@@ -157,6 +168,7 @@ CREATE TABLE `pharmacy` (
   `dose_item` int(11) NOT NULL,
   `drug_form` varchar(20) NOT NULL,
   `intake_freq` varchar(20) NOT NULL,
+  `units_disp` int(11) NOT NULL,
   `drug_price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -164,20 +176,22 @@ CREATE TABLE `pharmacy` (
 -- Dumping data for table `pharmacy`
 --
 
-INSERT INTO `pharmacy` (`id`, `drug_name`, `drug_strength`, `measurement`, `dose_item`, `drug_form`, `intake_freq`, `drug_price`) VALUES
-(1, 'paracetamol', '500', 'mg', 2, '', '3/d', 10),
-(2, 'isoniazid', '300', 'mg', 1, 'tabs', 'o/d', 0),
-(3, 'isoniazid+pyrazinamid+rifampicin', '150+500+150', '1', 1, 'tabs', 'o/d', 0),
-(4, 'ethambutol+isoniazid', '400+150', 'mg', 1, 'tabs', 'o/d', 0),
-(5, 'sulfamethoxazole+trimethoprim', '400+80', 'mg', 2, 'tabs', 'o/d', 0),
-(6, 'lopinavir+rotinavir', '100+25', 'mg', 1, 'tablets', 'o/d', 0),
-(7, 'kaletra', '80+20', 'mil', 1, 'solution', 'o/d', 0),
-(8, 'TDF+3TC+LPV+R', '1100', 'mg', 1, 'tablets', 'o/d', 0),
-(9, 'AZT+3TC+LPV+R', '60+30+40+10', 'mg', 1, 'sachets', 'o/d', 0),
-(10, 'ABC+3TC+DTG', '300+150+50', 'mg', 1, 'tablets', 'o/d', 0),
-(11, 'TDF+3TC+DTG', '300+300+50', 'mg', 1, 'tablets', 'o/d', 0),
-(12, 'DTG', '50', 'mg', 1, 'tablets', 'o/d', 0),
-(13, 'pyridoxin', '400', 'mg', 1, 'tablets', 'o/d', 0);
+INSERT INTO `pharmacy` (`id`, `drug_name`, `drug_strength`, `measurement`, `dose_item`, `drug_form`, `intake_freq`, `units_disp`, `drug_price`) VALUES
+(1, 'paracetamol', '500', 'mg', 2, '', '3/d', 0, 10),
+(2, 'isoniazid', '300', 'mg', 1, 'tabs', 'o/d', 0, 0),
+(3, 'isoniazid+pyrazinamid+rifampicin', '150+500+150', '1', 1, 'tabs', 'o/d', 0, 0),
+(4, 'ethambutol+isoniazid', '400+150', 'mg', 1, 'tabs', 'o/d', 0, 0),
+(5, 'sulfamethoxazole+trimethoprim', '400+80', 'mg', 2, 'tabs', 'o/d', 0, 0),
+(6, 'lopinavir+rotinavir', '100+25', 'mg', 1, 'tablets', 'o/d', 0, 0),
+(7, 'kaletra', '80+20', 'mil', 1, 'solution', 'o/d', 0, 0),
+(8, 'TDF+3TC+LPV+R', '1100', 'mg', 1, 'tablets', 'o/d', 0, 0),
+(9, 'AZT+3TC+LPV+R', '60+30+40+10', 'mg', 1, 'sachets', 'o/d', 0, 0),
+(10, 'ABC+3TC+DTG', '300+150+50', 'mg', 1, 'tablets', 'o/d', 0, 0),
+(11, 'TDF+3TC+DTG', '300+300+50', 'mg', 1, 'tablets', 'o/d', 0, 0),
+(12, 'DTG', '50', 'mg', 1, 'tablets', 'o/d', 0, 0),
+(13, 'pyridoxin', '400', 'mg', 1, 'tablets', 'o/d', 0, 0),
+(14, '35', 'Penicilin', '250', 0, '2', 'tablets', 0, 10),
+(15, 'Doxil', '500', 'mg', 2, 'tablets', '3/d', 20, 45);
 
 -- --------------------------------------------------------
 
@@ -239,7 +253,7 @@ INSERT INTO `users` (`username`, `password`, `fname`, `sname`, `type`, `email`, 
 ('AMwale', '2468', 'Albertina', 'Mwale', 'OPDNurse', 'albertinamwale@gmail.com', 973413534, '34432521', '0000-00-00', 'OPD', 0, '2022-11-08'),
 ('ARTDoctor', '1234', 'Lydia', 'Soko', 'ARTDoctor', 'lydiasoko@gmail.com', 976554545, '776541521', '1996-08-05', 'ART', 100, '0000-00-00'),
 ('BNgalande', '2468', 'blessing', 'Ngalande', 'Admin', 'blessingngalande@gamil.com', 98787655, '675344521', '2022-11-09', 'ICT', 0, '2022-11-09'),
-('DMwelwa', '1234', 'David', 'Mwelwa', 'Admin', 'davidgarciajr955@gmail.com', 972862797, '622741521', '0000-00-00', 'ICT', 0, '2022-11-08'),
+('DMwelwa', '44444444', 'David', 'Mwelwa', 'Admin', 'davidgarciajr955@gmail.com', 972862797, '622741521', '0000-00-00', 'ICT', 0, '2022-11-08'),
 ('EPhiri', '1234', 'Enock', 'Phiri', 'Laboratory', 'enockphiri@gmail.com', 979645463, '354635112', '2022-11-11', 'OPD', 122, '2022-11-11'),
 ('Gphiri', '1234', 'Gloria', 'Phiri', 'Registry', 'gloriaphiri@gmail.com', 776965077, '546635101', '2022-11-08', 'OPD', 0, '2022-11-08'),
 ('jay', '1234', 'Albertina', 'Mwale', 'Admin', 'albertinamwale@gmail.com', 973413534, '34432521', '2022-11-11', 'OPD', 200, '2022-11-11'),
@@ -295,19 +309,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `medication`
 --
 ALTER TABLE `medication`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1014;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1017;
 
 --
 -- AUTO_INCREMENT for table `pharmacy`
 --
 ALTER TABLE `pharmacy`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
