@@ -6,12 +6,12 @@
          <img src="../assets/img/photo-icon-home-logo-23.png">
 		 <i class="fas fa-menorah"></i>
           <span class="nav-item">Home</span>
-        </a></li><br>
+        </a></li><br><br>
         <li><a href="medical.php" class="logo">
 		<img src="../assets/img/1905707.png">
           <i class="fas fa-menorah"></i>
           <span class="nav-item">All Drugs</span>
-        </a></li><br>
+        </a></li><br><br>
         <li><a href="pharmqueue.php" class="logo">
 		<img src="../assets/img/queue.jpg">
           <i class="fas fa-queues-cog"></i>
@@ -24,12 +24,12 @@
 			echo "(".mysqli_num_rows($query).")";
 		?>
 		  </span>
-        </a></li><br>
+        </a></li><br><br>
         <li><a href="dispensations.php" class="logo">
 		<img src="../assets/img/pharm.png">
           <i class="fas fa-drugs-cog"></i>
           <span class="nav-item">Add Drug(s)</span>
-        </a></li><br>
+        </a></li><br><br>
         <li><a href="patient.php" class="logo">
 		<img src="../assets/img/patient.png">
           <i class="fas fa-list"></i>

@@ -6,7 +6,7 @@
          <img src="../assets/img/photo-icon-home-logo-23.png">
          <i class="fas fa-queues-cog"></i>
           <span class="nav-item">Home</span>
-        </a></li>
+        </a></li><br><br>
         <li><a href="reception.php" class="logo">
 		<img src="../assets/img/queue.jpg">
           <i class="fas fa-queues-cog"></i>
@@ -19,7 +19,7 @@
 			echo "(".mysqli_num_rows($query).")";
 		?>
 		  </span>
-        </a></li>
+        </a></li><br><br>
         <li><a href="laboratory.php" class="logo">
 		<img src="../assets/img/lab.jpg">
           <i class="fas fa-drugs-cog"></i>
@@ -32,12 +32,12 @@
 			echo "(".mysqli_num_rows($query).")";
 		?>
 		  </span>
-        </a></li>
+        </a></li><br><br>
         <li><a href="reports.php" class="logo">
 		<img src="../assets/img/report.png">
           <i class="fas fa-list"></i>
           <span class="nav-item">Reports</span>
-        </a></li>
+        </a></li><br><br>
 		<li><a href="patient.php" class="logo">
 		<img src="../assets/img/patient.png">
           <i class="fas fa-patients"></i>

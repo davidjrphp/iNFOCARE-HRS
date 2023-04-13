@@ -1,5 +1,5 @@
 <div class="header">
-	<img src="../assets/img/admin.png" height="90px" width="65px" alt="logo"><br>
+	<img src="../assets/img/doc.jpg" height="90px" width="65px" alt="logo"><br>
 	<h4>Provider</h4>
 	<div class="headerleft">
 	<b><center><h4>Welcome To iNFOCARE <br> Health Records System</h4></center></b>

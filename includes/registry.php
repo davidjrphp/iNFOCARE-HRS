@@ -187,7 +187,7 @@ while ($row = mysqli_fetch_assoc($result))
 			if ($i == $current_page) {
 				echo "<span>$i</span>";
 			} else {
-				echo "<a href=\"patient.php?page=$i\">$i</a>";
+				echo "<a href=\"search.php?page=$i\">$i</a>";
 			}
 		}
 		echo "</div>";
